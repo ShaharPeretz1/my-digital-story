@@ -15,6 +15,7 @@ export default {
   	extend: {
   		fontFamily: {
   			sans: [
+          'SN Pro'
   				'Open Sans',
   				'ui-sans-serif',
   				'system-ui',
