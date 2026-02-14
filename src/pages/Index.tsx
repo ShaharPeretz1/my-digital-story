@@ -174,8 +174,11 @@ const Index = () => {
             {/* Profile Photo */}
             <div className="flex-shrink-0">
               <div className="w-40 h-40 rounded-full bg-muted flex items-center justify-center border-2 border-primary/20 overflow-hidden">
-                {/* Replace with actual image: <img src="/assets/your-photo.jpg" alt="Shahar Berger" className="w-full h-full object-cover" /> */}
-                <span className="text-4xl font-semibold text-muted-foreground">SB</span>
+                <img 
+                  src="/assets/shahar-photo.png" 
+                  alt="Shahar Berger" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
