@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Briefcase, FlaskConical, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import profilePhoto from "@/assets/profile.png";
 
 const highlights = [
   {
@@ -67,6 +68,7 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Avatar className="h-56 w-56 border-4 border-primary/20 shadow-xl md:h-72 md:w-72">
+              <AvatarImage src={profilePhoto} alt="Profile photo" />
               <AvatarFallback className="bg-primary/10 text-4xl font-display text-primary">
                 YN
               </AvatarFallback>
