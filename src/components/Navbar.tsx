@@ -11,7 +11,7 @@ const Navbar = () => {
         </Link>
 
         {/* Resume Download Button */}
-        <a href="/assets/Shahar_Berger_Resume.pdf" download>
+        <a href="/assets/Shahar_Berger_PM.pdf" download>
           <Button size="sm" variant="default">
             <Download className="h-4 w-4 mr-2" />
             Resume
