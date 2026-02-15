@@ -261,7 +261,7 @@ const Index = () => {
             <div className="flex-shrink-0">
               <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20">
                 <img 
-                  src="/assets/shahar-photo.png" 
+                  src="/assets/LinkedIn Profile.png" 
                   alt="Shahar Berger" 
                   className="w-full h-full object-cover"
                 />
