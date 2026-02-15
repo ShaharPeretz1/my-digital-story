@@ -88,7 +88,7 @@ const projects = [
     organization: "GI View Ltd., Israel",
     role: "Product Lead Engineer",
     duration: "2022-2024",
-    image: "/assets/projects/giview.png",
+    image: "/assets/giview.png",
     shortDescription: "Led development of single-use colonoscopy systems from concept through FDA approval to market launch.",
     fullDescription: `Managed complete product lifecycle for three FDA Class II single-use colonoscopy devices. 
     Transformed automotive-grade cameras into medical imaging systems through custom CMOS sensor calibration, 
@@ -115,9 +115,9 @@ const projects = [
     ],
     externalLink: "https://www.giview.com/advantages",
     images: [
-      "/assets/projects/_one_pager.png",
-      "/assets/projects/geometric distorsion test setup from protocol.png",
-      "/assets/projects/image uniformity test setup.png"
+      "/assets/_one_pager.png",
+      "/assets/geometric distorsion test setup from protocol.png",
+      "/assets/image uniformity test setup.png"
     ]
   },
   {
