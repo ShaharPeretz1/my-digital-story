@@ -1,21 +1,83 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Linkedin, Github, Download, FileText, Code2, ArrowLeft, ExternalLink, MapPin, GraduationCap, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Linkedin, Github, Download, FileText, Code2, ExternalLink, MapPin, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+
+// Experience data
+const experience = [
+  {
+    id: "nxstage-coop",
+    title: "R&D System Engineer II",
+    company: "NxStage Medical (Fresenius Medical Care)",
+    location: "Lawrence, MA",
+    duration: "Jan 2025 - Present",
+    type: "Co-op",
+    description: [
+      "Conducting root-cause investigation for Class II home hemodialysis device",
+      "Designing and executing system-level test protocols",
+      "Multi-variable data analysis using MATLAB",
+      "Ensuring regulatory compliance (MDR, 21 CFR 820)"
+    ]
+  },
+  {
+    id: "giview",
+    title: "Product Lead Engineer",
+    company: "GI View Ltd.",
+    location: "Israel",
+    duration: "2022 - 2024",
+    type: "Full-time",
+    description: [
+      "Led end-to-end product development for 3 FDA Class II optical systems",
+      "Managed cross-functional teams and external consultants",
+      "Developed CMOS sensor calibration and image processing algorithms",
+      "Designed manufacturing automation tools, increasing yield from 20% to 80%",
+      "Authored UI specifications for 10+ features"
+    ]
+  },
+  {
+    id: "medtech-hackathon",
+    title: "Product Team Member",
+    company: "TAU MedTech Hackathon (Synergy Innovate)",
+    location: "Tel Aviv, Israel",
+    duration: "2021",
+    type: "Event Organization",
+    description: [
+      "Organized healthcare innovation competition with 18 teams (~200 participants)",
+      "Established partnerships with Amazon, Google, Microsoft, Philips, Teva, and IBM",
+      "Translated clinical needs from medical institutions into actionable challenges",
+      "Recruited 4 technical mentors and 1 medical judge",
+      "Organized 4 educational workshops"
+    ],
+    highlights: ["Amazon", "Google", "Microsoft", "Philips", "Teva", "IBM"]
+  },
+  {
+    id: "defense",
+    title: "Program Analyst",
+    company: "National Defense",
+    location: "Israel",
+    duration: "2015 - 2017",
+    type: "Full-time",
+    description: [
+      "Led high-priority analytical projects in time-sensitive environments",
+      "Synthesized complex data into strategic recommendations",
+      "Prepared executive presentations for senior leadership"
+    ]
+  }
+];
 
 // Project categories
 const categories = [
-  { id: "all", label: "All Projects", color: "primary" },
-  { id: "medical-devices", label: "Medical Devices", color: "secondary" },
-  { id: "research", label: "Research", color: "accent" },
-  { id: "ml-ai", label: "ML & AI", color: "primary" },
+  { id: "all", label: "All Projects" },
+  { id: "medical-devices", label: "Medical Devices" },
+  { id: "research", label: "Research" },
+  { id: "ml-ai", label: "ML & AI" },
 ];
 
-// Expanded projects data with visual elements
+// Projects data
 const projects = [
   {
     id: "giview",
@@ -26,7 +88,7 @@ const projects = [
     organization: "GI View Ltd., Israel",
     role: "Product Lead Engineer",
     duration: "2022-2024",
-    image: "/assets/projects/giview-device.jpg", // You'll upload this
+    image: "/assets/projects/giview-device.jpg",
     shortDescription: "Led development of single-use colonoscopy systems from concept through FDA approval to market launch.",
     fullDescription: `Managed complete product lifecycle for three FDA Class II single-use colonoscopy devices. 
     Transformed automotive-grade cameras into medical imaging systems through custom CMOS sensor calibration, 
@@ -46,7 +108,7 @@ const projects = [
       "Achieved 200° field of view (vs. 140° industry standard)"
     ],
     skills: ["CMOS Calibration", "Image Processing", "SolidWorks", "FDA 21 CFR 820", "ISO 13485", "Manufacturing Automation", "Product Management"],
-    githubLink: null, // Add if you have code to share
+    githubLink: null,
     reportFiles: [
       { name: "Product Specification", url: "/assets/reports/giview-spec.pdf" },
       { name: "Technical Overview", url: "/assets/reports/giview-tech.pdf" }
@@ -83,11 +145,11 @@ const projects = [
     outcomes: [
       "Successfully validated device safety across all test subjects",
       "Provided quantitative data for regulatory submissions",
-      "Demonstrated novel LiDAR application in biomechanics",
+      "Demonstrated novel LiDAR application in biomechanical assessment",
       "Complete research report and poster delivered"
     ],
     skills: ["LiDAR Systems", "MATLAB", "Biomechanics", "Wearable Devices", "Signal Processing", "Clinical Research"],
-    githubLink: "https://github.com/yourusername/lidar-motion-analysis", // Add your actual link
+    githubLink: "https://github.com/yourusername/lidar-motion-analysis",
     reportFiles: [
       { name: "Research Report", url: "/assets/reports/lidar-full-report.pdf" },
       { name: "Research Poster", url: "/assets/reports/lidar-poster.pdf" }
@@ -166,19 +228,17 @@ const projects = [
     ],
     skills: ["MATLAB", "System Engineering", "Root-Cause Analysis", "V&V", "MDR", "21 CFR 820"],
     githubLink: null,
-    reportFiles: [], // May not be shareable due to NDA
+    reportFiles: [],
     externalLink: null,
     images: [
       "/assets/projects/hemodialysis.jpg"
     ]
   },
-  // Add more projects here easily
 ];
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeTab, setActiveTab] = useState("home");
 
   const filteredProjects = selectedCategory === "all" 
     ? projects 
@@ -198,18 +258,16 @@ const Index = () => {
       <section className="border-b bg-white">
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           <div className="flex flex-col md:flex-row gap-6 items-start">
-            {/* Photo */}
             <div className="flex-shrink-0">
               <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20">
                 <img 
-                  src="/assets/LinkedIn Profile.png" 
+                  src="/assets/shahar-photo.png" 
                   alt="Shahar Berger" 
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
 
-            {/* Info */}
             <div className="flex-1">
               <h1 className="text-3xl font-semibold text-foreground mb-1">Shahar Berger</h1>
               <p className="text-lg text-muted-foreground mb-3">
@@ -260,16 +318,15 @@ const Index = () => {
 
       {/* Main Content */}
       <section className="container mx-auto px-4 py-8 max-w-6xl">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs defaultValue="projects" className="w-full">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-8">
-            <TabsTrigger value="home">Projects</TabsTrigger>
+            <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
           </TabsList>
 
           {/* PROJECTS TAB */}
-          <TabsContent value="home" className="space-y-6">
-            {/* Category Filter */}
+          <TabsContent value="projects" className="space-y-6">
             <div className="flex flex-wrap gap-2 justify-center">
               {categories.map((cat) => (
                 <Button
@@ -284,7 +341,6 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Project Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredProjects.map((project, i) => (
                 <motion.div
@@ -297,7 +353,6 @@ const Index = () => {
                     className="overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 group"
                     onClick={() => openProject(project)}
                   >
-                    {/* Project Image */}
                     <div className="h-48 bg-gradient-card relative overflow-hidden">
                       {project.image ? (
                         <img 
@@ -346,19 +401,115 @@ const Index = () => {
             </div>
           </TabsContent>
 
-          {/* EXPERIENCE & ABOUT TABS - Same as before, keeping brief */}
-          <TabsContent value="experience">
-            <Card>
-              <CardContent className="p-6">
-                <p className="text-muted-foreground">Experience tab content here...</p>
-              </CardContent>
-            </Card>
+          {/* EXPERIENCE TAB */}
+          <TabsContent value="experience" className="space-y-4">
+            {experience.map((exp, i) => (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
+              >
+                <Card>
+                  <CardContent className="p-6">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h3 className="text-lg font-semibold text-foreground">{exp.title}</h3>
+                        <p className="text-sm text-muted-foreground">
+                          {exp.company} • {exp.location}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm text-muted-foreground">{exp.duration}</p>
+                        <Badge variant="outline" className="mt-1">{exp.type}</Badge>
+                      </div>
+                    </div>
+
+                    {exp.highlights && (
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {exp.highlights.map((company, i) => (
+                          <Badge key={i} variant="secondary" className="font-medium">
+                            {company}
+                          </Badge>
+                        ))}
+                      </div>
+                    )}
+
+                    <ul className="space-y-1.5">
+                      {exp.description.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <span className="text-primary mt-1.5">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </TabsContent>
 
+          {/* ABOUT ME TAB */}
           <TabsContent value="about">
             <Card>
-              <CardContent className="p-6">
-                <p className="text-muted-foreground">About content here...</p>
+              <CardContent className="p-8">
+                <div className="prose prose-sm max-w-none space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-3">Background</h3>
+                    <p className="text-base leading-relaxed text-muted-foreground mb-4">
+                      My path to biomedical engineering began with movement. As a dancer and Pilates instructor, 
+                      I developed a deep understanding of human physiology and the importance of individualizing 
+                      solutions to each person's needs. This foundation taught me the intersection of science and 
+                      practice - how to translate knowledge into tangible impact.
+                    </p>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      While I loved working one-on-one with clients, I wanted to scale that impact. I wanted to 
+                      develop devices and treatments that could change thousands of lives. This drive led me to 
+                      study biomedical engineering at Tel Aviv University, where I could merge my passion for 
+                      health with technical engineering.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-3">Professional Journey</h3>
+                    <p className="text-base leading-relaxed text-muted-foreground mb-4">
+                      After serving in national defense (2015-2017), where I led analytical projects in high-stakes 
+                      environments, I joined GI View as a Product Lead Engineer. There, I managed the complete product 
+                      lifecycle for FDA Class II colonoscopy systems - from early prototypes to commercial launch.
+                    </p>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      In 2024, I moved to Boston for my M.S. in Bioengineering at Northeastern University. The co-op 
+                      program was particularly attractive as it bridges academic learning with industry experience. 
+                      Currently, I'm working at NxStage Medical (Fresenius), gaining exposure to large-scale medical 
+                      device development for life-saving hemodialysis systems.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-3">What Drives Me</h3>
+                    <p className="text-base leading-relaxed text-muted-foreground mb-4">
+                      I'm motivated by complex challenges and the opportunity to continuously learn. Whether it's 
+                      optimizing a manufacturing process, diving into new software tools, or understanding a novel 
+                      technical domain, I approach problems with curiosity and persistence.
+                    </p>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      Outside of work, I maintain a daily fitness practice (a non-negotiable habit from my dance 
+                      background), enjoy hiking in New England, and spend time learning through podcasts and reading. 
+                      I'm particularly interested in neuroscience and health - I'm in the top 1% of listeners for the 
+                      Huberman Lab podcast.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-3">Looking Forward</h3>
+                    <p className="text-base leading-relaxed text-muted-foreground">
+                      I'm seeking roles where I can apply both technical depth and product thinking - positions that 
+                      involve owning the full device lifecycle, leading cross-functional teams, and solving meaningful 
+                      challenges in healthcare. I'm open to opportunities across industries and locations, with a focus 
+                      on roles that offer genuine technical and leadership challenges.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -370,7 +521,6 @@ const Index = () => {
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           {selectedProject && (
             <div className="space-y-6">
-              {/* Header */}
               <div>
                 <DialogTitle className="text-2xl font-bold mb-2">{selectedProject.title}</DialogTitle>
                 <p className="text-lg text-primary mb-1">{selectedProject.subtitle}</p>
@@ -384,7 +534,6 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* Images Gallery */}
               {selectedProject.images && selectedProject.images.length > 0 && (
                 <div className="grid grid-cols-2 gap-3">
                   {selectedProject.images.map((img, i) => (
@@ -395,7 +544,6 @@ const Index = () => {
                 </div>
               )}
 
-              {/* Full Description */}
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-2">OVERVIEW</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -403,7 +551,6 @@ const Index = () => {
                 </p>
               </div>
 
-              {/* Challenge */}
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-2">CHALLENGE</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -411,7 +558,6 @@ const Index = () => {
                 </p>
               </div>
 
-              {/* Approach */}
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-2">APPROACH</h3>
                 <ul className="space-y-2">
@@ -424,7 +570,6 @@ const Index = () => {
                 </ul>
               </div>
 
-              {/* Outcomes */}
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-2">OUTCOMES</h3>
                 <ul className="space-y-2">
@@ -437,7 +582,6 @@ const Index = () => {
                 </ul>
               </div>
 
-              {/* Skills */}
               <div>
                 <h3 className="text-sm font-semibold text-foreground mb-3">SKILLS & TOOLS</h3>
                 <div className="flex flex-wrap gap-2">
@@ -447,7 +591,6 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* Downloads & Links */}
               <div className="flex flex-wrap gap-3 pt-4 border-t">
                 {selectedProject.githubLink && (
                   <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer">
