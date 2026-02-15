@@ -271,7 +271,7 @@ const Index = () => {
             <div className="flex-1">
               <h1 className="text-3xl font-semibold text-foreground mb-1">Shahar Berger</h1>
               <p className="text-lg text-muted-foreground mb-3">
-                Product Engineer • Medical Devices • Bioengineering
+                Technical Product Manager • Medical Devices • Bioengineering
               </p>
               
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
@@ -281,7 +281,7 @@ const Index = () => {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <GraduationCap className="h-4 w-4" />
-                  <span>M.S. Bioengineering, Northeastern (May 2026) • 4.0 GPA</span>
+                  <span>M.S. Bioengineering • 4.0 GPA</span>
                 </div>
               </div>
 
