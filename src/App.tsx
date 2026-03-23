@@ -13,6 +13,9 @@ import Resume from "./pages/Resume";
 import HireMe from "./pages/HireMe";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ProjectsGrid from './components/ProjectsGrid';
+import ProjectDetail from './components/ProjectDetail';
+
 
 const queryClient = new QueryClient();
 
@@ -32,6 +35,8 @@ const App = () => (
             <Route path="/resume" element={<Resume />} />
             <Route path="/hire-me" element={<HireMe />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/projects" element={<ProjectsGrid />} />
+            <Route path="/projects/:projectId" element={<ProjectDetail />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

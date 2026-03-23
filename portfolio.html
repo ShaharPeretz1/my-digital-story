@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shahar Berger — Bioengineer & Product Builder</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Variables ─────────────────────────────────────────── */
+    :root {
+      --bg:        #F2EFE7;
+      --bg2:       #E8E4DA;
+      --bg3:       #FFFFFF;
+      --bg-dark:   #1C3425;
+      --bg-dark2:  #152A1D;
+      --gd:        #1C3425;
+      --gm:        #2E5C40;
+      --gb:        #3D7A52;
+      --gb-hover:  #2E5C40;
+      --t1:        #1E2118;
+      --t2:        #7A7568;
+      --tw:        #0D130F;
+      --t-light:   #EDE8DC;
+      --border:    rgba(46,92,64,0.18);
+      --border-dk: rgba(255,255,255,0.12);
+      --fd:        'Clash Display', sans-serif;
+      --fb:        'DM Sans', sans-serif;
+      --fm:        'DM Mono', monospace;
+      --shadow:    0 2px 16px rgba(28,52,37,0.08);
+      --shadow-lg: 0 8px 40px rgba(28,52,37,0.12);
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--t1);
+      font-family: var(--fb);
+      font-size: 17px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    p { margin-bottom: 18px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 22px 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background .3s, backdrop-filter .3s, box-shadow .3s;
+    }
+    nav.sc {
+      background: rgba(242,239,231,0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-logo {
+      font-family: var(--fd); font-size: 15px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--gd);
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-family: var(--fm); font-size: 11px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--t2);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gm); }
+
+    /* ─── Shared Layout ──────────────────────────────────────── */
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+    section { padding: 108px 0; }
+    .sec-label {
+      font-family: var(--fm); font-size: 11px; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--gb); margin-bottom: 18px;
+    }
+    .sec-label-lt {
+      font-family: var(--fm); font-size: 11px; letter-spacing: .25em;
+      text-transform: uppercase; color: rgba(160,210,180,0.9); margin-bottom: 18px;
+    }
+    .sec-h {
+      font-family: var(--fd);
+      font-size: clamp(30px, 4vw, 50px);
+      font-weight: 700; color: var(--tw); line-height: 1.12; margin-bottom: 28px;
+    }
+    .sec-h-lt {
+      font-family: var(--fd);
+      font-size: clamp(30px, 4vw, 50px);
+      font-weight: 700; color: #FFFFFF; line-height: 1.12; margin-bottom: 28px;
+    }
+    .divider { height: 1px; background: var(--border); }
+
+    /* ─── Reveal animation ───────────────────────────────────── */
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .rv.in { opacity: 1; transform: none; }
+
+    /* ─── Buttons ────────────────────────────────────────────── */
+    .btn {
+      display: inline-block; padding: 13px 30px;
+      font-family: var(--fb); font-size: 14px; font-weight: 600;
+      letter-spacing: .04em; cursor: pointer; transition: all .2s;
+      border: none;
+    }
+    .btn-g { background: var(--gd); color: #fff; }
+    .btn-g:hover { background: var(--gm); transform: translateY(-1px); }
+    .btn-o { background: transparent; color: var(--gd); border: 1.5px solid var(--gm); }
+    .btn-o:hover { background: var(--gd); color: #fff; }
+    .btn-lt { background: #fff; color: var(--gd); font-weight: 700; }
+    .btn-lt:hover { background: var(--t-light); transform: translateY(-1px); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding: 140px 56px 80px;
+      max-width: 1180px; margin: 0 auto; position: relative;
+    }
+    .hero-name {
+      font-family: var(--fm); font-size: 12px; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--gb); margin-bottom: 22px;
+      opacity: 0; animation: fu .8s .15s forwards;
+    }
+    .hero-h {
+      font-family: var(--fd);
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 700; color: var(--gd); line-height: 1.02; margin-bottom: 30px;
+      opacity: 0; animation: fu .9s .35s forwards;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 1.8vw, 19px); color: var(--t1);
+      max-width: 560px; line-height: 1.65; margin-bottom: 22px;
+      opacity: 0; animation: fu .9s .55s forwards;
+    }
+    .hero-tags {
+      font-family: var(--fm); font-size: 12px; letter-spacing: .1em;
+      color: var(--t2); margin-bottom: 44px;
+      opacity: 0; animation: fu .9s .7s forwards;
+    }
+    .hero-tags span { margin: 0 10px; color: var(--gm); }
+    .hero-ctas { display: flex; gap: 14px; opacity: 0; animation: fu .9s .85s forwards; }
+    .hero-hint {
+      margin-top: auto; padding-top: 60px;
+      font-family: var(--fm); font-size: 11px; letter-spacing: .15em;
+      color: var(--t2); text-transform: uppercase; display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fu 1s 1.1s forwards;
+    }
+    .hero-hint::before { content:''; display:block; width:36px; height:1px; background:var(--gm); }
+
+    /* ─── Metrics bar (DARK) ──────────────────────────────────── */
+    .metrics {
+      background: var(--bg-dark);
+      padding: 52px 0;
+    }
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 24px;
+      max-width: 1180px; margin: 0 auto; padding: 0 48px;
+    }
+    .met { display: flex; flex-direction: column; gap: 6px; }
+    .met-n {
+      font-family: var(--fd); font-size: 46px; font-weight: 700;
+      color: #fff; line-height: 1;
+    }
+    .met-n .acc { color: #7EC89A; }
+    .met-l {
+      font-family: var(--fm); font-size: 11px; letter-spacing: .1em;
+      color: rgba(237,232,220,0.6); text-transform: uppercase; line-height: 1.5;
+    }
+
+    /* ─── About ──────────────────────────────────────────────── */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: start;
+    }
+    .about-text p { font-size: 16px; line-height: 1.82; color: var(--t1); }
+    .creds { margin-top: 44px; display: flex; flex-direction: column; gap: 18px; }
+    .cred {
+      padding-left: 16px; border-left: 2px solid var(--gm);
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .cred-t { font-weight: 600; font-size: 14px; color: var(--tw); }
+    .cred-s { font-family: var(--fm); font-size: 11px; color: var(--t2); letter-spacing: .04em; }
+    .photo-box {
+      background: var(--bg2); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: sticky; top: 100px;
+    }
+    .photo-box img { width: 100%; height: auto; object-fit: contain; display: block; }
+    .photo-box .ph-hint {
+      font-family: var(--fm); font-size: 11px; color: var(--t2);
+      text-align: center; line-height: 1.9; letter-spacing: .04em; padding: 24px;
+    }
+
+    /* ─── Philosophy (DARK) ─────────────────────────────────── */
+    #philosophy { background: var(--bg-dark); padding: 108px 0; }
+    .phil-intro { font-size: 18px; color: rgba(237,232,220,0.8); max-width: 620px; margin-bottom: 60px; line-height: 1.72; }
+    .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .pillar {
+      background: rgba(255,255,255,0.05); padding: 40px 34px;
+      transition: background .25s; cursor: default; border: 1px solid var(--border-dk);
+    }
+    .pillar:hover { background: rgba(255,255,255,0.09); }
+    .pillar-n {
+      font-family: var(--fd); font-size: 58px; font-weight: 700;
+      color: #7EC89A; line-height: 1; margin-bottom: 22px; opacity: .5;
+    }
+    .pillar-t {
+      font-family: var(--fd); font-size: 19px; font-weight: 600;
+      color: #fff; margin-bottom: 14px; line-height: 1.3;
+    }
+    .pillar-b { font-size: 14.5px; color: rgba(237,232,220,0.65); line-height: 1.78; }
+
+    /* ─── Projects ───────────────────────────────────────────── */
+    #projects { background: var(--bg2); }
+    .proj-intro { font-size: 16px; color: var(--t2); max-width: 560px; margin-bottom: 52px; }
+    .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .proj-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+      display: flex; flex-direction: column;
+    }
+    .proj-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+    .proj-img-wrap {
+      width: 100%; height: 210px; overflow: hidden;
+      background: var(--bg2); flex-shrink: 0; position: relative;
+    }
+    .proj-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .4s ease;
+    }
+    .proj-card:hover .proj-img-wrap img { transform: scale(1.04); }
+    .proj-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--gd) 0%, var(--gm) 100%);
+    }
+    .proj-img-placeholder span {
+      font-family: var(--fd); font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700; color: rgba(255,255,255,0.2); letter-spacing: -.02em;
+      text-align: center; padding: 0 20px; line-height: 1.1;
+    }
+    .proj-body-wrap { padding: 28px 30px 30px; display: flex; flex-direction: column; flex: 1; }
+    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 8px; }
+    .proj-tag { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; color: var(--gb); text-transform: uppercase; }
+    .proj-badge {
+      font-family: var(--fm); font-size: 10px; letter-spacing: .07em;
+      color: var(--t2); border: 1px solid var(--border); padding: 3px 10px;
+      white-space: nowrap; flex-shrink: 0; background: var(--bg);
+    }
+    .proj-title {
+      font-family: var(--fd); font-size: 20px; font-weight: 600;
+      color: var(--tw); margin-bottom: 12px; line-height: 1.25;
+    }
+    .proj-text { font-size: 14px; color: var(--t2); line-height: 1.76; margin-bottom: 20px; flex: 1; }
+    .proj-result {
+      border-left: 2px solid var(--gb); padding-left: 14px;
+      margin-bottom: 18px; font-size: 13.5px; color: var(--gd); font-weight: 500;
+    }
+    .proj-skills { font-family: var(--fm); font-size: 10px; letter-spacing: .07em; color: var(--t2); text-transform: uppercase; }
+
+    /* ─── Thinking ───────────────────────────────────────────── */
+    #thinking { background: var(--bg); }
+    .think-intro { font-size: 16px; color: var(--t2); max-width: 480px; margin-bottom: 52px; }
+    .posts { display: flex; flex-direction: column; gap: 2px; }
+    .post {
+      background: var(--bg3); padding: 34px 40px;
+      border: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 32px;
+      cursor: pointer; transition: box-shadow .25s, transform .2s;
+      margin-bottom: 2px;
+    }
+    .post:hover { box-shadow: var(--shadow); transform: translateX(4px); }
+    .post-date { font-family: var(--fm); font-size: 11px; letter-spacing: .1em; color: var(--gb); text-transform: uppercase; margin-bottom: 10px; }
+    .post-title { font-family: var(--fd); font-size: 22px; font-weight: 600; color: var(--tw); margin-bottom: 10px; }
+    .post-prev { font-size: 14.5px; color: var(--t2); line-height: 1.7; max-width: 700px; }
+    .post-arr { font-size: 22px; color: var(--gm); transition: color .2s, transform .2s; flex-shrink: 0; }
+    .post:hover .post-arr { color: var(--gd); transform: translateX(5px); }
+
+    /* Post modals */
+    .modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(242,239,231,0.97); z-index: 200;
+      overflow-y: auto; padding: 80px 48px;
+    }
+    .modal.open { display: block; }
+    .modal-inner { max-width: 680px; margin: 0 auto; }
+    .modal-back {
+      display: inline-block; margin-bottom: 44px;
+      font-family: var(--fm); font-size: 12px; letter-spacing: .15em;
+      color: var(--gb); text-transform: uppercase; cursor: pointer;
+      background: none; border: none;
+    }
+    .modal-title {
+      font-family: var(--fd); font-size: clamp(28px,4vw,44px);
+      font-weight: 700; color: var(--gd); margin-bottom: 36px; line-height: 1.12;
+    }
+    .modal-body p { font-size: 17px; color: var(--t1); line-height: 1.88; }
+
+    /* ─── What's Next (DARK) ────────────────────────────────── */
+    #next { background: var(--bg-dark); padding: 108px 0; }
+    .next-body { font-size: 18px; color: rgba(237,232,220,0.85); max-width: 700px; margin-bottom: 44px; line-height: 1.78; }
+    .next-body p { margin-bottom: 20px; }
+
+    /* ─── Contact ────────────────────────────────────────────── */
+    #contact { background: var(--bg); border-top: 1px solid var(--border); padding: 80px 0 60px; }
+    .contact-row { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 40px; }
+    .contact-h {
+      font-family: var(--fd); font-size: clamp(38px,6vw,68px);
+      font-weight: 700; color: var(--gd); line-height: 1.05; margin-bottom: 20px;
+    }
+    .contact-email {
+      font-family: var(--fd); font-size: clamp(17px,2.2vw,26px);
+      font-weight: 600; color: var(--gb); transition: color .2s;
+    }
+    .contact-email:hover { color: var(--gd); }
+    .contact-note { font-size: 13px; color: var(--t2); margin-top: 10px; }
+    .contact-links { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+    .clink {
+      font-family: var(--fm); font-size: 12px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--t2); transition: color .2s;
+    }
+    .clink:hover { color: var(--gd); }
+    .footer-bar {
+      margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
+      font-family: var(--fm); font-size: 11px; letter-spacing: .07em;
+      color: var(--t2); text-transform: uppercase;
+    }
+
+    /* ─── Keyframes ──────────────────────────────────────────── */
+    @keyframes fu {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 120px 24px 64px; }
+      .wrap { padding: 0 24px; }
+      section { padding: 72px 0; }
+      #philosophy, #next { padding: 72px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .photo-box { aspect-ratio: 4/3; position: static; }
+      .pillars { grid-template-columns: 1fr; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2,1fr); padding: 0 24px; }
+      .contact-row { flex-direction: column; align-items: flex-start; }
+      .contact-links { align-items: flex-start; }
+      .post { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav id="nav">
+  <div class="nav-logo">Shahar Berger</div>
+  <ul class="nav-links">
+    <li><a href="#about">Background</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#thinking">Thinking</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
+<div id="hero">
+  <div class="hero-name">Shahar Berger</div>
+  <h1 class="hero-h">Curious enough to ask why.<br>Stubborn enough to find out.</h1>
+  <p class="hero-sub">Bioengineer. Product Manager. I connect disciplines others treat as separate — and own problems until they're solved.</p>
+  <div class="hero-tags">
+    MS Bioengineering <span>·</span> FDA Class II Medical Devices <span>·</span> Product Lead <span>·</span> New York
+  </div>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn btn-g">See my work</a>
+    <a href="#contact" class="btn btn-o">Get in touch</a>
+  </div>
+  <div class="hero-hint">Scroll to explore</div>
+</div>
+
+<!-- ── METRICS (dark band) ──────────────────────────────────── -->
+<div class="metrics">
+  <div class="metrics-grid">
+    <div class="met rv">
+      <div class="met-n"><span class="acc">80</span>%</div>
+      <div class="met-l">Manufacturing yield - up from 20%</div>
+    </div>
+    <div class="met rv">
+      <div class="met-n">+<span class="acc">90</span>%</div>
+      <div class="met-l">Camera visualization improvement</div>
+    </div>
+    <div class="met rv">
+      <div class="met-n"><span class="acc">3</span></div>
+      <div class="met-l">FDA Class II devices — concept to approval</div>
+    </div>
+    <div class="met rv">
+      <div class="met-n"><span class="acc">4.0</span></div>
+      <div class="met-l">MS Bioengineering GPA — Northeastern</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text rv">
+        <div class="sec-label">Background</div>
+        <h2 class="sec-h">I learn the whole system.<br>Then I fix it.</h2>
+        <p>There's a pattern in every project I've worked on: the solution was hiding at the boundary between two disciplines that weren't in conversation with each other. The color failure in a colonoscopy camera wasn't purely an optics problem — it was a sensor physics problem expressed through software. The yield failure in manufacturing wasn't a production problem — it was a precision engineering problem embedded in an assembly workflow. The difference between finding those connections and missing them is whether you actually understand all the systems involved.</p>
+        <p>I'm genuinely autodidactic. At GI View, I taught myself optics and electronics from scratch while managing three concurrent FDA programs — not because the job required it, but because I needed to understand how things actually worked. I kept studying beyond what any role demanded. The same has been true for signal processing, regulatory science, CAD, image processing algorithms. Each domain becomes a tool for seeing the connections the previous domains were missing.</p>
+        <p>What energizes me most is full ownership of a domain — defining quality criteria, setting the path independently, making the calls. The camera system at GI View was the clearest example: complete ownership of a complex system crossing optics, electronics, software, and manufacturing, with the freedom to decide what success looked like. That combination of autonomy, cross-disciplinary depth, and a hard problem is where I do my best work.</p>
+        <p>I've also been a natural coordinator on every team I've been part of. At GI View I managed four external engineering consultants across optics, software, mechanical, and algorithms — while keeping three FDA programs aligned, mentoring junior engineers, and maintaining vendor relationships. That leadership has always come naturally. Building on it formally is the next step.</p>
+        <p>I came to the US for my MS in Bioengineering at Northeastern for the same reason: go deeper, learn more rigorously, so the next thing I build is better than the last. I believe biotech needs product managers who've been in the lab — who understand what an engineer means when they say "that's not possible," and know the difference between a real constraint and a framing problem.</p>
+        <div class="creds">
+          <div class="cred">
+            <div class="cred-t">MS Bioengineering · Northeastern University</div>
+            <div class="cred-s">2024–2026 · GPA 4.0 · Boston, MA</div>
+          </div>
+          <div class="cred">
+            <div class="cred-t">BS Biomedical Engineering · Tel Aviv University</div>
+            <div class="cred-s">2019–2023 · Dean's List Excellence Award</div>
+          </div>
+          <div class="cred">
+            <div class="cred-t">Product Lead Engineer · GI View Ltd.</div>
+            <div class="cred-s">2022–2024 · 3 FDA Class II Devices · Israel</div>
+          </div>
+          <div class="cred">
+            <div class="cred-t">R&D Systems Engineer II · NxStage Medical (Fresenius)</div>
+            <div class="cred-s">2025 · Home Hemodialysis · Class II Device</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-box rv">
+        <!-- TO ADD YOUR PHOTO: replace the div.ph-hint with <img src="public/assets/your-photo.jpg" alt="Shahar Berger"> -->
+        <img src="public/assets/Gemini.png" alt="Shahar Berger">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHILOSOPHY (dark) ─────────────────────────────────────── -->
+<section id="philosophy">
+  <div class="wrap">
+    <div class="sec-label-lt rv">Philosophy</div>
+    <h2 class="sec-h-lt rv">A different way of thinking<br>about product in biotech.</h2>
+    <p class="phil-intro rv">Most product frameworks weren't designed for regulated environments. Here's what I've learned building medical devices from the ground up.</p>
+    <div class="pillars">
+      <div class="pillar rv">
+        <div class="pillar-n">01</div>
+        <div class="pillar-t">Every design decision has a regulatory shadow.</div>
+        <div class="pillar-b">In medical devices, the FDA pathway isn't something you engage at the end — it's embedded in every early architecture choice. I've watched teams choose technically elegant solutions that added 18 months to their timeline because they didn't account for the submission pathway. The most important product question at a startup isn't just "what does the user want?" It's "what does the user want, what will the FDA accept, what can we actually build — and in what order?"</div>
+      </div>
+      <div class="pillar rv">
+        <div class="pillar-n">02</div>
+        <div class="pillar-t">The breakthrough lives between the disciplines.</div>
+        <div class="pillar-b">The problems worth solving in biotech don't live cleanly inside one field. Our colonoscopy cameras failed because no one was holding the optical physics, the firmware constraints, and the FDA submission pathway in their head at the same time. When I taught myself color science to fix the visualization system, or integrated mechanical tooling with real-time software to fix our assembly line, the solutions came from refusing to treat those domains as separate. The most useful thing I can do in a room is see where the disciplines touch — and work there.</div>
+      </div>
+      <div class="pillar rv">
+        <div class="pillar-n">03</div>
+        <div class="pillar-t">Own the problem, not just your piece of it.</div>
+        <div class="pillar-b">The colonoscopy device was in crisis months before FDA submission. The codebase was a black box, the previous engineer couldn't explain his own work, and no one else was positioned to fix it. I didn't ask whose responsibility it was. I reverse-engineered the full system, rebuilt the calibration from scratch, and turned around a failing vendor relationship while doing it. The habit isn't heroism — it's a conviction that the quality of the outcome matters more than the tidiness of the org chart. If the problem is real, it's mine.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ──────────────────────────────────────────────── -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-label rv">Work</div>
+    <h2 class="sec-h rv">Selected projects.</h2>
+    <p class="proj-intro rv">From a startup building FDA Class II devices with no prior template, to large-company regulated environments and academic research. A record of what I built and what I learned.</p>
+
+    <div class="proj-grid">
+
+      <!-- Card 1: Colonoscopy Rescue -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/assets/giview.png" alt="GI View colonoscopy camera" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">GI View · Regulatory · Systems</div>
+            <div class="proj-badge">FDA Approved</div>
+          </div>
+          <div class="proj-title">Colonoscopy Device — Rescue & FDA Approval</div>
+          <div class="proj-text">Months before FDA submission, the device was in critical condition. Undocumented changes by a previous engineer had left the system unstable — wrong colors, broken features, no paper trail. The engineer who built it came back and couldn't explain what he'd done.<br><br>I took full ownership. Reverse-engineered the entire system across optics, firmware, and calibration. Rebuilt hardware-software integration from the ground up — simultaneously managing the camera supplier relationship, escalating from unanswered emails to weekly in-person sessions by engaging them as a technical peer, not a small customer asking for favors.</div>
+          <div class="proj-result">Passed FDA approval in approximately one month.</div>
+          <div class="proj-skills">Delivery under pressure · Vendor management · Reverse engineering · FDA compliance</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Yield -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/assets/geometric distorsion test setup from protocol.png" alt="Optical test setup" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">GI View · Engineering · Process</div>
+            <div class="proj-badge">Completed</div>
+          </div>
+          <div class="proj-title">Manufacturing Yield: 20% → 80%</div>
+          <div class="proj-text">Our hand-assembly process for FDA Class II colonoscopy cameras was failing 80% of the time. Each device took a full week to build. I identified that the assembly process itself — not the components — was the root cause.<br><br>Two parallel workstreams: a mechanical assembly tool constraining sensitive components into repeatable positioning, and a software quality gate evaluating image quality mid-process rather than at end-of-line. Months of iteration working directly with the production team.</div>
+          <div class="proj-result">Yield: 20% → 80%, directly accelerating FDA submission capacity.</div>
+          <div class="proj-skills">Root cause analysis · Hardware design (SolidWorks) · Python · Process improvement</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Visualization -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/assets/color correction SW.png" alt="Color calibration software" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">GI View · Imaging · Algorithms</div>
+            <div class="proj-badge">Completed</div>
+          </div>
+          <div class="proj-title">Camera Visualization — +90% Quality Improvement</div>
+          <div class="proj-text">Our cameras were failing FDA color matching standards. When I surfaced this, leadership dismissed it as "not worth the time." I was the only one who understood why it mattered clinically — color misrepresentation directly affects abnormality detection rates.<br><br>I got the project approved by making the clinical and competitive gap visible, not by arguing. Then taught myself color science, sensor physics, and calibration methodology from scratch — spending months on datasheets, designing experiments, and systematically tuning the imaging chain from the sensor level up. Recruited an external algorithm consultant to collaborate on per-camera software calibration. Became the company's sole expert on all camera, optics, and imaging quality questions.</div>
+          <div class="proj-result">Passed FDA color requirements. ~90% overall visualization improvement from baseline.</div>
+          <div class="proj-skills">Influencing without authority · Image processing · Optical systems · MATLAB / Python</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Gastroscopy 0→1 -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/assets/image uniformity test setup.png" alt="Image uniformity optical test setup" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">GI View · Product Development · 0→1</div>
+            <div class="proj-badge">In Development</div>
+          </div>
+          <div class="proj-title">Gastroscopy Device — Building from Zero</div>
+          <div class="proj-text">New product, new clinical use case, no prior version. I led the full 0→1 development — from physician discovery research through technology decisions, specifications, component sourcing, and vendor management.<br><br>I spent time in procedure rooms observing clinical use across multiple competing devices. Made the technology decision to pursue pure image processing for tissue enhancement — justified not just technically, but regulatorily: the FDA software pathway is faster and more predictable than hardware or chemical alternatives.</div>
+          <div class="proj-result">Full technical and regulatory architecture established from first principles.</div>
+          <div class="proj-skills">0→1 product development · Clinical discovery · Technology decisions · Regulatory strategy</div>
+        </div>
+      </div>
+
+      <!-- Card 5: SnS LiDAR -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/SnS/images/slide_7_img_8.jpg" alt="LiDAR motion capture system" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Hardware · Algorithms</div>
+            <div class="proj-badge">Validated</div>
+          </div>
+          <div class="proj-title">LiDAR Motion Capture — Wearable Assistive Device</div>
+          <div class="proj-text">Designed and built a wearable LiDAR-based motion capture system at TAU's Musculoskeletal Biomechanics Lab to model physiological sit-to-stand movements — a key biomechanical metric for assistive medical devices and rehabilitation assessment.<br><br>Built from scratch across hardware and software: developed custom MATLAB algorithms to extract movement signatures from raw LiDAR signals, then validated accuracy against a gold-standard Instron testing machine across 12 test subjects. The system demonstrated strong tracking fidelity, establishing feasibility for clinical use.</div>
+          <div class="proj-result">Validated across 12 test subjects against Instron gold standard.</div>
+          <div class="proj-skills">Hardware design · MATLAB · Signal processing · Biomechanics · Device validation</div>
+        </div>
+      </div>
+
+      <!-- Card 6: NxStage -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <div class="proj-img-placeholder">
+            <span>Hemodialysis Device Investigation</span>
+          </div>
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">NxStage Medical · Systems Engineering</div>
+            <div class="proj-badge">Completed</div>
+          </div>
+          <div class="proj-title">Root Cause Investigation — Class II Hemodialysis Device</div>
+          <div class="proj-text">Root-cause investigation for an on-market Class II Home-Hemodialysis device following regulatory-driven material changes. Ran 18-variable data analysis in MATLAB to identify the failure mechanism across a multi-physics system — mechanical, fluidic, and electronic.<br><br>Designed and executed 6 system-level test protocols integrating mechanical, hardware, and software performance. Prepared technical risk communications for senior leadership, translating complex multi-variable findings into clear engineering and regulatory recommendations — my first exposure to how a large regulated-environment company documents and manages design changes under MDR scrutiny.</div>
+          <div class="proj-result">Design modification requirements established. MDR compliance maintained.</div>
+          <div class="proj-skills">Multi-variable data analysis · MATLAB · Systems engineering · Test protocol design</div>
+        </div>
+      </div>
+
+      <!-- Card 7: MedTech Hackathon -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/MedTech%20Hackathon/images/7AED81C8-76E1-4847-A5FB-E8FA3A69E46C.JPG" alt="TAU MedTech Hackathon" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'proj-img-placeholder\'><span>MedTech Hackathon</span></div>'">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Leadership</div>
+            <div class="proj-badge">Completed</div>
+          </div>
+          <div class="proj-title">TAU MedTech Hackathon — Healthcare Innovation Ecosystem</div>
+          <div class="proj-text">Co-organized a healthcare innovation competition sponsored by Amazon, Google, Microsoft, Philips, Teva, and IBM. 18 teams, ~200 participants, 6 healthcare challenges. Established partnerships with major medical institutions, translated unstructured clinical needs into actionable engineering challenges, and secured data access agreements.<br><br>Translating clinical problems into structured challenges that engineers can actually solve is itself a form of product management — the same translation skill at a different scale.</div>
+          <div class="proj-result">Built a cross-institutional healthcare innovation ecosystem from scratch.</div>
+          <div class="proj-skills">Ecosystem building · Strategic partnerships · Clinical translation · Event leadership</div>
+        </div>
+      </div>
+
+      <!-- Card 8: Cell Migration -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/cell migration/images/pdf_page_11_img_10.jpeg" alt="Cell migration analysis pipeline" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Imaging · ML</div>
+            <div class="proj-badge">Academic</div>
+          </div>
+          <div class="proj-title">Cell Migration Analysis — Image Processing Pipeline</div>
+          <div class="proj-text">Built an automated image processing pipeline to identify and quantify changes in cell morphology over time as cells were exposed to trypsin enzyme — a key variable in tissue engineering and cell culture workflows.<br><br>Developed in MATLAB: segmentation, contrast correction, background normalization, and denoising — enabling systematic morphological tracking across timepoints without manual measurement.</div>
+          <div class="proj-result">Automated cell morphology quantification across exposure timepoints.</div>
+          <div class="proj-skills">MATLAB · Image segmentation · Cell biology · Signal processing</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── THINKING ──────────────────────────────────────────────── -->
+<section id="thinking">
+  <div class="wrap">
+    <div class="sec-label rv">Thinking</div>
+    <h2 class="sec-h rv">Things I keep coming back to.</h2>
+    <p class="think-intro rv">Ideas about product management, biotech, and what sits between them.</p>
+    <div class="posts">
+
+      <div class="post rv" onclick="openPost('p1')">
+        <div>
+          <div class="post-date">March 2026</div>
+          <div class="post-title">The PM who can't read a datasheet</div>
+          <div class="post-prev">In most industries, a PM who can't build the thing they're managing is fine. In biotech and medical devices, I'm not sure that's true — the product and the science are the same thing...</div>
+        </div>
+        <div class="post-arr">→</div>
+      </div>
+
+      <div class="post rv" onclick="openPost('p2')">
+        <div>
+          <div class="post-date">February 2026</div>
+          <div class="post-title">What I learned watching endoscopy procedures</div>
+          <div class="post-prev">The first time I watched a colonoscopy procedure, I came with a list of product questions. What I noticed was something else: the physician barely looked at the feature panel...</div>
+        </div>
+        <div class="post-arr">→</div>
+      </div>
+
+      <div class="post rv" onclick="openPost('p3')">
+        <div>
+          <div class="post-date">January 2026</div>
+          <div class="post-title">The regulatory shadow</div>
+          <div class="post-prev">Every design decision in medical device development has a regulatory shadow. The best technical solution and the best regulatory strategy are rarely the same thing...</div>
+        </div>
+        <div class="post-arr">→</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Post modals -->
+<div class="modal" id="p1">
+  <div class="modal-inner">
+    <button class="modal-back" onclick="closePost('p1')">← Back</button>
+    <div class="post-date">March 2026</div>
+    <div class="modal-title">The PM who can't read a datasheet</div>
+    <div class="modal-body">
+      <p>In most industries, a PM who can't build the thing they're managing is fine. You don't need to know how to write React to make a good SaaS product.</p>
+      <p>In biotech and medical devices, I'm not sure that's true. The product and the science are the same thing. When you're designing a colonoscopy camera, the optics aren't a feature — they're the mechanism of action. The firmware isn't infrastructure — it determines what a physician sees during a procedure and whether they can detect an abnormality. The FDA submission isn't a compliance exercise — it's the primary product milestone.</p>
+      <p>A PM who can't engage with those layers technically isn't directing the product — they're describing it. The engineers are making the decisions, and the PM is translating after the fact.</p>
+      <p>The best PM I know how to be is one who understands the thing well enough to have an opinion about the tradeoffs — and earns the credibility to be in the room when those tradeoffs are made.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p2">
+  <div class="modal-inner">
+    <button class="modal-back" onclick="closePost('p2')">← Back</button>
+    <div class="post-date">February 2026</div>
+    <div class="modal-title">What I learned watching endoscopy procedures</div>
+    <div class="modal-body">
+      <p>The first time I watched a colonoscopy procedure, I came with a list of product questions. What features do you use most? What's missing? What would make this better?</p>
+      <p>What I noticed was something else: the physician barely looked at the feature panel. Three years of engineering debate about which functions to include — and in the actual procedure, the camera moved and the physician looked.</p>
+      <p>What actually mattered was field of view. Color fidelity. The speed at which the image updated when the camera changed direction. None of those were on my list.</p>
+      <p>The gap between what users say they want and what they actually need, in a clinical context, is enormous — and dangerous. A wrong assumption in consumer tech costs you engagement metrics. A wrong assumption in medical devices costs you a clinical trial, an FDA submission, or worse, a patient outcome.</p>
+      <p>Getting in the room — literally into the operating room — is the only way I know to close that gap. Everything else is a model of reality. The procedure room is reality.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p3">
+  <div class="modal-inner">
+    <button class="modal-back" onclick="closePost('p3')">← Back</button>
+    <div class="post-date">January 2026</div>
+    <div class="modal-title">The regulatory shadow</div>
+    <div class="modal-body">
+      <p>Every design decision in medical device development has a regulatory shadow.</p>
+      <p>Choose the wrong tissue enhancement approach and you've added a hardware component that needs its own FDA validation pathway — adding 12–18 months and a significant cost burden. Choose a software-based solution and you've opened a faster submission pathway but a harder engineering problem.</p>
+      <p>The best technical solution and the best regulatory strategy are rarely the same thing. And the PM is the person who has to reconcile them — before anyone writes a single line of code.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHAT'S NEXT (dark) ─────────────────────────────────────── -->
+<section id="next">
+  <div class="wrap">
+    <div style="max-width:780px">
+      <div class="sec-label-lt rv">Looking Ahead</div>
+      <h2 class="sec-h-lt rv">Where I'm going.</h2>
+      <div class="next-body rv">
+        <p>I'm completing my MS in Bioengineering at Northeastern in May 2026, and actively looking for my next role in New York City.</p>
+        <p>What I'm looking for: an early-stage environment where the problem is still being defined — a company building something genuinely hard in biotech, medical devices, or life sciences, where the work requires holding technical, clinical, and regulatory complexity together at the same time. I do my best work where the disciplines haven't been cleanly separated yet.</p>
+        <p>The direction I'm building toward: product leadership at the early-stage, where strategy and execution are still the same job. Where you need someone who can go from a physician's unstructured clinical concern to a hardware architecture decision to an FDA submission pathway in the same week — and genuinely enjoys it.</p>
+        <p>If you're working on something like that, I want to hear about it.</p>
+      </div>
+      <a href="#contact" class="btn btn-lt rv">Get in touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-row">
+      <div>
+        <h2 class="contact-h rv">Let's talk.</h2>
+        <a href="mailto:bergershahar10@gmail.com" class="contact-email rv">bergershahar10@gmail.com</a>
+        <p class="contact-note rv">New York City</p>
+      </div>
+      <div class="contact-links rv">
+        <a href="https://www.linkedin.com/in/shahar-berger1" target="_blank" class="clink">LinkedIn →</a>
+        <a href="public/Shahar_Berger_PM.pdf" target="_blank" class="clink">Resume PDF →</a>
+      </div>
+    </div>
+    <div class="footer-bar rv">© 2026 Shahar Berger · Bioengineer &amp; Product Builder</div>
+  </div>
+</section>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60));
+
+  // Scroll reveal with stagger
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const siblings = [...e.target.parentElement.querySelectorAll('.rv')];
+      const idx = siblings.indexOf(e.target);
+      setTimeout(() => e.target.classList.add('in'), Math.min(idx * 90, 320));
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+  // Post modals
+  function openPost(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+    window.scrollTo(0,0);
+  }
+  function closePost(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape')
+      document.querySelectorAll('.modal.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+  });
+</script>
+</body>
+</html>
