@@ -319,23 +319,45 @@
     }
     .proj-skills { font-family: var(--fm); font-size: 10px; letter-spacing: .07em; color: var(--t2); text-transform: uppercase; }
 
-    /* ─── Thinking ───────────────────────────────────────────── */
+    /* ─── Thinking (Books & Podcasts) ───────────────────────── */
     #thinking { background: var(--bg); }
-    .think-intro { font-size: 16px; color: var(--t2); max-width: 480px; margin-bottom: 52px; }
-    .posts { display: flex; flex-direction: column; gap: 2px; }
-    .post {
-      background: var(--bg3); padding: 34px 40px;
-      border: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center; gap: 32px;
-      cursor: pointer; transition: box-shadow .25s, transform .2s;
-      margin-bottom: 2px;
+    .think-intro { font-size: 16px; color: var(--t2); max-width: 540px; margin-bottom: 60px; }
+    .reads-section { margin-bottom: 56px; }
+    .reads-label {
+      font-family: var(--fm); font-size: 11px; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gb); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 14px;
     }
-    .post:hover { box-shadow: var(--shadow); transform: translateX(4px); }
-    .post-date { font-family: var(--fm); font-size: 11px; letter-spacing: .1em; color: var(--gb); text-transform: uppercase; margin-bottom: 10px; }
-    .post-title { font-family: var(--fd); font-size: 22px; font-weight: 600; color: var(--tw); margin-bottom: 10px; }
-    .post-prev { font-size: 14.5px; color: var(--t2); line-height: 1.7; max-width: 700px; }
-    .post-arr { font-size: 22px; color: var(--gm); transition: color .2s, transform .2s; flex-shrink: 0; }
-    .post:hover .post-arr { color: var(--gd); transform: translateX(5px); }
+    .reads-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .books-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .podcasts-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .read-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      overflow: hidden; transition: box-shadow .25s, transform .22s;
+      display: flex; flex-direction: column;
+    }
+    .read-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .read-cover {
+      width: 100%; overflow: hidden; background: var(--bg2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .book-cover { aspect-ratio: 2/3; }
+    .podcast-cover { aspect-ratio: 1/1; }
+    .read-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .read-card:hover .read-cover img { transform: scale(1.04); }
+    .read-cover-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      background: var(--bg2); font-family: var(--fm); font-size: 11px;
+      color: var(--t2); letter-spacing: .1em; text-transform: uppercase;
+    }
+    .read-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+    .read-type { font-family: var(--fm); font-size: 10px; letter-spacing: .15em; color: var(--gb); text-transform: uppercase; margin-bottom: 8px; }
+    .read-title { font-family: var(--fd); font-size: 15px; font-weight: 600; color: var(--tw); line-height: 1.3; margin-bottom: 6px; }
+    .read-author { font-family: var(--fm); font-size: 11px; color: var(--t2); letter-spacing: .04em; }
 
     /* Post modals */
     .modal {
@@ -410,7 +432,8 @@
       .metrics-grid { grid-template-columns: repeat(2,1fr); padding: 0 24px; }
       .contact-row { flex-direction: column; align-items: flex-start; }
       .contact-links { align-items: flex-start; }
-      .post { padding: 24px; }
+      .books-grid { grid-template-columns: repeat(2, 1fr); }
+      .podcasts-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     }
   </style>
 </head>
@@ -799,82 +822,122 @@
   <div class="wrap">
     <div class="sec-label rv">Thinking</div>
     <h2 class="sec-h rv">Things I keep coming back to.</h2>
-    <p class="think-intro rv">Ideas about product management, biotech, and what sits between them.</p>
-    <div class="posts">
+    <p class="think-intro rv">Books and podcasts that have genuinely changed how I think — about building products, engineering, performance, and the career game.</p>
 
-      <div class="post rv" onclick="openPost('p1')">
-        <div>
-          <div class="post-date">March 2026</div>
-          <div class="post-title">The PM who can't read a datasheet</div>
-          <div class="post-prev">In most industries, a PM who can't build the thing they're managing is fine. In biotech and medical devices, I'm not sure that's true — the product and the science are the same thing...</div>
+    <!-- Books -->
+    <div class="reads-section rv">
+      <div class="reads-label">Books</div>
+      <div class="books-grid">
+
+        <div class="read-card">
+          <div class="read-cover book-cover">
+            <img src="public/assets/reads/scrum.jpg" alt="Scrum book cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Agile · Process</div>
+            <div class="read-title">Scrum: The Art of Doing Twice the Work in Half the Time</div>
+            <div class="read-author">Jeff Sutherland & J.J. Sutherland</div>
+          </div>
         </div>
-        <div class="post-arr">→</div>
-      </div>
 
-      <div class="post rv" onclick="openPost('p2')">
-        <div>
-          <div class="post-date">February 2026</div>
-          <div class="post-title">What I learned watching endoscopy procedures</div>
-          <div class="post-prev">The first time I watched a colonoscopy procedure, I came with a list of product questions. What I noticed was something else: the physician barely looked at the feature panel...</div>
+        <div class="read-card">
+          <div class="read-cover book-cover">
+            <img src="public/assets/reads/product-manager.jpg" alt="Be the Greatest Product Manager Ever book cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Product · Career</div>
+            <div class="read-title">Be the Greatest Product Manager Ever</div>
+            <div class="read-author">Lewis C. Lin</div>
+          </div>
         </div>
-        <div class="post-arr">→</div>
-      </div>
 
-      <div class="post rv" onclick="openPost('p3')">
-        <div>
-          <div class="post-date">January 2026</div>
-          <div class="post-title">The regulatory shadow</div>
-          <div class="post-prev">Every design decision in medical device development has a regulatory shadow. The best technical solution and the best regulatory strategy are rarely the same thing...</div>
+        <div class="read-card">
+          <div class="read-cover book-cover">
+            <img src="public/assets/reads/algorithms.jpg" alt="Algorithms to Live By book cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Decision-making · CS</div>
+            <div class="read-title">Algorithms to Live By</div>
+            <div class="read-author">Brian Christian & Tom Griffiths</div>
+          </div>
         </div>
-        <div class="post-arr">→</div>
-      </div>
 
+        <div class="read-card">
+          <div class="read-cover book-cover">
+            <img src="public/assets/reads/peak-performance.jpg" alt="Peak Performance book cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Performance · Science</div>
+            <div class="read-title">Peak Performance</div>
+            <div class="read-author">Brad Stulberg & Steve Magness</div>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <!-- Podcasts -->
+    <div class="reads-section rv">
+      <div class="reads-label">Podcasts</div>
+      <div class="podcasts-grid">
+
+        <div class="read-card">
+          <div class="read-cover podcast-cover">
+            <img src="public/assets/reads/huberman.jpg" alt="Huberman Lab podcast cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Neuroscience · Health</div>
+            <div class="read-title">Huberman Lab</div>
+            <div class="read-author">Andrew Huberman</div>
+          </div>
+        </div>
+
+        <div class="read-card">
+          <div class="read-cover podcast-cover">
+            <img src="public/assets/reads/being-engineer.jpg" alt="Being an Engineer podcast cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Engineering · Career</div>
+            <div class="read-title">Being an Engineer</div>
+            <div class="read-author">Aaron Moncur</div>
+          </div>
+        </div>
+
+        <div class="read-card">
+          <div class="read-cover podcast-cover">
+            <img src="public/assets/reads/career-game.jpg" alt="Secrets of the Career Game podcast cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Career · Strategy</div>
+            <div class="read-title">Secrets of the Career Game</div>
+            <div class="read-author">Kendall Berg</div>
+          </div>
+        </div>
+
+        <div class="read-card">
+          <div class="read-cover podcast-cover">
+            <img src="public/assets/reads/founders.jpg" alt="Founders podcast cover" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=\'read-cover-placeholder\'>Cover</div>'">
+          </div>
+          <div class="read-body">
+            <div class="read-type">Entrepreneurship · History</div>
+            <div class="read-title">Founders</div>
+            <div class="read-author">David Senra</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
-
-<!-- Post modals -->
-<div class="modal" id="p1">
-  <div class="modal-inner">
-    <button class="modal-back" onclick="closePost('p1')">← Back</button>
-    <div class="post-date">March 2026</div>
-    <div class="modal-title">The PM who can't read a datasheet</div>
-    <div class="modal-body">
-      <p>In most industries, a PM who can't build the thing they're managing is fine. You don't need to know how to write React to make a good SaaS product.</p>
-      <p>In biotech and medical devices, I'm not sure that's true. The product and the science are the same thing. When you're designing a colonoscopy camera, the optics aren't a feature — they're the mechanism of action. The firmware isn't infrastructure — it determines what a physician sees during a procedure and whether they can detect an abnormality. The FDA submission isn't a compliance exercise — it's the primary product milestone.</p>
-      <p>A PM who can't engage with those layers technically isn't directing the product — they're describing it. The engineers are making the decisions, and the PM is translating after the fact.</p>
-      <p>The best PM I know how to be is one who understands the thing well enough to have an opinion about the tradeoffs — and earns the credibility to be in the room when those tradeoffs are made.</p>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="p2">
-  <div class="modal-inner">
-    <button class="modal-back" onclick="closePost('p2')">← Back</button>
-    <div class="post-date">February 2026</div>
-    <div class="modal-title">What I learned watching endoscopy procedures</div>
-    <div class="modal-body">
-      <p>The first time I watched a colonoscopy procedure, I came with a list of product questions. What features do you use most? What's missing? What would make this better?</p>
-      <p>What I noticed was something else: the physician barely looked at the feature panel. Three years of engineering debate about which functions to include — and in the actual procedure, the camera moved and the physician looked.</p>
-      <p>What actually mattered was field of view. Color fidelity. The speed at which the image updated when the camera changed direction. None of those were on my list.</p>
-      <p>The gap between what users say they want and what they actually need, in a clinical context, is enormous — and dangerous. A wrong assumption in consumer tech costs you engagement metrics. A wrong assumption in medical devices costs you a clinical trial, an FDA submission, or worse, a patient outcome.</p>
-      <p>Getting in the room — literally into the operating room — is the only way I know to close that gap. Everything else is a model of reality. The procedure room is reality.</p>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="p3">
-  <div class="modal-inner">
-    <button class="modal-back" onclick="closePost('p3')">← Back</button>
-    <div class="post-date">January 2026</div>
-    <div class="modal-title">The regulatory shadow</div>
-    <div class="modal-body">
-      <p>Every design decision in medical device development has a regulatory shadow.</p>
-      <p>Choose the wrong tissue enhancement approach and you've added a hardware component that needs its own FDA validation pathway — adding 12–18 months and a significant cost burden. Choose a software-based solution and you've opened a faster submission pathway but a harder engineering problem.</p>
-      <p>The best technical solution and the best regulatory strategy are rarely the same thing. And the PM is the person who has to reconcile them — before anyone writes a single line of code.</p>
-    </div>
-  </div>
-</div>
 
 <!-- ── WHAT'S NEXT (dark) ─────────────────────────────────────── -->
 <section id="next">
