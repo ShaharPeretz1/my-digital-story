@@ -214,37 +214,92 @@
     /* ─── Projects ───────────────────────────────────────────── */
     #projects { background: var(--bg2); }
     .proj-intro { font-size: 16px; color: var(--t2); max-width: 560px; margin-bottom: 52px; }
-    .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
     .proj-card {
       background: var(--bg3);
       border: 1px solid var(--border);
+      border-radius: 10px;
       overflow: hidden;
-      transition: box-shadow .25s, transform .25s;
+      transition: box-shadow .28s ease, transform .28s ease, border-color .28s ease;
       display: flex; flex-direction: column;
     }
     .proj-card:hover {
       box-shadow: var(--shadow-lg);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      border-color: rgba(46,92,64,0.28);
     }
     .proj-img-wrap {
-      width: 100%; height: 210px; overflow: hidden;
+      width: 100%; height: 272px; overflow: hidden;
       background: var(--bg2); flex-shrink: 0; position: relative;
     }
-    .proj-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform .4s ease;
+    .proj-img-wrap::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to top, rgba(13,19,15,0.14) 0%, transparent 52%);
+      border-bottom: 1px solid rgba(46,92,64,0.1);
     }
-    .proj-card:hover .proj-img-wrap img { transform: scale(1.04); }
+    .proj-img-wrap:has(.proj-img-placeholder)::after {
+      background: linear-gradient(to top, rgba(0,0,0,0.28) 0%, transparent 50%);
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+    .proj-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center center;
+      display: block;
+      transition: transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .proj-card:hover .proj-img-wrap img { transform: scale(1.045); }
+    /* Mixed aspect ratios — letterbox so subjects aren’t clipped (cover crops harshly) */
+    .proj-hero--contain {
+      background: linear-gradient(168deg, #ebe8e1 0%, var(--bg2) 42%, #e3e9e4 100%);
+    }
+    .proj-hero--contain::after {
+      background: linear-gradient(to top, rgba(13,19,15,0.07) 0%, transparent 58%);
+    }
+    .proj-hero--contain img {
+      object-fit: contain;
+      object-position: center center;
+      padding: 12px 16px;
+    }
+    .proj-card:hover .proj-hero--contain img { transform: none; }
+    .proj-hero--cells img { object-position: center center; }
+    /* UI / screenshot assets — letterbox instead of heavy upscale-crop */
+    .proj-hero--color {
+      background: linear-gradient(165deg, #e4ebe4 0%, var(--bg2) 48%, #dfe8e0 100%);
+    }
+    .proj-hero--color img {
+      object-fit: contain;
+      padding: 14px 18px;
+      transform: none;
+    }
+    .proj-card:hover .proj-hero--color img { transform: none; }
     .proj-img-placeholder {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, var(--gd) 0%, var(--gm) 100%);
+      background: linear-gradient(148deg, #1a3024 0%, var(--gm) 42%, #234d35 100%);
+      position: relative;
+    }
+    .proj-img-placeholder::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 90% 70% at 50% 100%, rgba(0,0,0,0.22), transparent 55%);
     }
     .proj-img-placeholder span {
-      font-family: var(--fd); font-size: clamp(28px, 4vw, 42px);
-      font-weight: 700; color: rgba(255,255,255,0.2); letter-spacing: -.02em;
-      text-align: center; padding: 0 20px; line-height: 1.1;
+      font-family: var(--fm); font-size: 10px;
+      font-weight: 500; color: rgba(237,232,220,0.45); letter-spacing: .2em;
+      text-align: center; padding: 0 28px; line-height: 1.65;
+      text-transform: uppercase; position: relative; z-index: 1;
+      max-width: 280px;
     }
+    .proj-doc-link {
+      display: inline-block;
+      margin-top: 18px;
+      font-family: var(--fm); font-size: 11px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--gb);
+      border-bottom: 1px solid var(--border); padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .proj-doc-link + .proj-doc-link { margin-top: 10px; }
+    .proj-doc-link:hover { color: var(--gm); border-color: rgba(46,92,64,0.35); }
     .proj-body-wrap { padding: 28px 30px 30px; display: flex; flex-direction: column; flex: 1; }
     .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 8px; }
     .proj-tag { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; color: var(--gb); text-transform: uppercase; }
@@ -485,9 +540,9 @@
 
     <div class="proj-grid">
 
-      <!-- Card 1: Colonoscopy Rescue -->
+      <!-- Card 1: Colonoscopy FDA -->
       <div class="proj-card rv">
-        <div class="proj-img-wrap">
+        <div class="proj-img-wrap proj-hero--contain">
           <img src="public/assets/giview.png" alt="GI View colonoscopy camera" loading="lazy">
         </div>
         <div class="proj-body-wrap">
@@ -495,16 +550,16 @@
             <div class="proj-tag">GI View · Regulatory · Systems</div>
             <div class="proj-badge">FDA Approved</div>
           </div>
-          <div class="proj-title">Colonoscopy Device — Rescue & FDA Approval</div>
-          <div class="proj-text">Months before FDA submission, the device was in critical condition. Undocumented changes by a previous engineer had left the system unstable — wrong colors, broken features, no paper trail. The engineer who built it came back and couldn't explain what he'd done.<br><br>I took full ownership. Reverse-engineered the entire system across optics, firmware, and calibration. Rebuilt hardware-software integration from the ground up — simultaneously managing the camera supplier relationship, escalating from unanswered emails to weekly in-person sessions by engaging them as a technical peer, not a small customer asking for favors.</div>
+          <div class="proj-title">Colonoscopy Device — FDA Approval</div>
+          <div class="proj-text">Taking full ownership of a complex system means holding all of it — not just the piece assigned to you. I owned this device end to end across optics, firmware, and calibration, while simultaneously managing the camera supplier relationship and keeping three FDA programs aligned.<br><br>Getting the supplier from unresponsive to weekly in-person collaboration required showing up as a technical peer, not a customer. The device passed FDA approval within approximately one month.</div>
           <div class="proj-result">Passed FDA approval in approximately one month.</div>
-          <div class="proj-skills">Delivery under pressure · Vendor management · Reverse engineering · FDA compliance</div>
+          <div class="proj-skills">Full ownership · Vendor management · Cross-functional delivery · FDA compliance</div>
         </div>
       </div>
 
       <!-- Card 2: Yield -->
       <div class="proj-card rv">
-        <div class="proj-img-wrap">
+        <div class="proj-img-wrap proj-hero--contain">
           <img src="public/assets/geometric distorsion test setup from protocol.png" alt="Optical test setup" loading="lazy">
         </div>
         <div class="proj-body-wrap">
@@ -513,15 +568,15 @@
             <div class="proj-badge">Completed</div>
           </div>
           <div class="proj-title">Manufacturing Yield: 20% → 80%</div>
-          <div class="proj-text">Our hand-assembly process for FDA Class II colonoscopy cameras was failing 80% of the time. Each device took a full week to build. I identified that the assembly process itself — not the components — was the root cause.<br><br>Two parallel workstreams: a mechanical assembly tool constraining sensitive components into repeatable positioning, and a software quality gate evaluating image quality mid-process rather than at end-of-line. Months of iteration working directly with the production team.</div>
+          <div class="proj-text">The production team was optimizing an assembly process that wasn't the real problem. I reframed it: the variability wasn't a people issue or a components issue — it was a process architecture issue. Nobody had scoped it that way before, and nobody had asked me to fix it. I diagnosed it, defined the project, and initiated it from scratch.<br><br>From there I owned everything. Defined the requirements and success criteria, designed and prototyped two parallel solutions — a mechanical assembly tool that constrained sensitive components into repeatable positioning, and a software tool that evaluated image quality in real time during assembly, actively directing the assembler toward correct positioning before anything was locked in. Iterated both through months of hands-on testing with the production team. When the tools were validated, I wrote the full production instructions the team would follow going forward.<br><br>The result wasn't just a yield improvement. It was a repeatable, documented process where there hadn't been one before.</div>
           <div class="proj-result">Yield: 20% → 80%, directly accelerating FDA submission capacity.</div>
-          <div class="proj-skills">Root cause analysis · Hardware design (SolidWorks) · Python · Process improvement</div>
+          <div class="proj-skills">Root cause reframing · 0→1 project ownership · Hardware design · Process improvement · Cross-functional execution</div>
         </div>
       </div>
 
       <!-- Card 3: Visualization -->
       <div class="proj-card rv">
-        <div class="proj-img-wrap">
+        <div class="proj-img-wrap proj-hero--color">
           <img src="public/assets/color correction SW.png" alt="Color calibration software" loading="lazy">
         </div>
         <div class="proj-body-wrap">
@@ -530,15 +585,15 @@
             <div class="proj-badge">Completed</div>
           </div>
           <div class="proj-title">Camera Visualization — +90% Quality Improvement</div>
-          <div class="proj-text">Our cameras were failing FDA color matching standards. When I surfaced this, leadership dismissed it as "not worth the time." I was the only one who understood why it mattered clinically — color misrepresentation directly affects abnormality detection rates.<br><br>I got the project approved by making the clinical and competitive gap visible, not by arguing. Then taught myself color science, sensor physics, and calibration methodology from scratch — spending months on datasheets, designing experiments, and systematically tuning the imaging chain from the sensor level up. Recruited an external algorithm consultant to collaborate on per-camera software calibration. Became the company's sole expert on all camera, optics, and imaging quality questions.</div>
+          <div class="proj-text">Color accuracy in a colonoscopy camera isn't an aesthetic concern — it directly affects how reliably a physician can identify tissue abnormalities. I made that clinical case visible, got the project approved, and owned it fully from there.<br><br>Taught myself color science and sensor physics from scratch — this was the one place it was unavoidable — and worked with an external algorithm consultant to build a per-camera calibration system. Became the company's sole expert on camera, optics, and imaging quality.</div>
           <div class="proj-result">Passed FDA color requirements. ~90% overall visualization improvement from baseline.</div>
-          <div class="proj-skills">Influencing without authority · Image processing · Optical systems · MATLAB / Python</div>
+          <div class="proj-skills">Clinical framing · Influencing without authority · Image processing · Optical systems · MATLAB / Python</div>
         </div>
       </div>
 
       <!-- Card 4: Gastroscopy 0→1 -->
       <div class="proj-card rv">
-        <div class="proj-img-wrap">
+        <div class="proj-img-wrap proj-hero--contain">
           <img src="public/assets/image uniformity test setup.png" alt="Image uniformity optical test setup" loading="lazy">
         </div>
         <div class="proj-body-wrap">
@@ -547,7 +602,7 @@
             <div class="proj-badge">In Development</div>
           </div>
           <div class="proj-title">Gastroscopy Device — Building from Zero</div>
-          <div class="proj-text">New product, new clinical use case, no prior version. I led the full 0→1 development — from physician discovery research through technology decisions, specifications, component sourcing, and vendor management.<br><br>I spent time in procedure rooms observing clinical use across multiple competing devices. Made the technology decision to pursue pure image processing for tissue enhancement — justified not just technically, but regulatorily: the FDA software pathway is faster and more predictable than hardware or chemical alternatives.</div>
+          <div class="proj-text">New product, new clinical use case, nothing inherited. I led the full 0→1 — from physician discovery research through technology decisions, specifications, component sourcing, and vendor management. Spent time in procedure rooms observing clinical workflows across competing devices before making any technical decisions.<br><br>The technology direction I chose was justified not just on engineering merit, but on regulatory strategy: the faster, more predictable FDA pathway was a product decision as much as a technical one.</div>
           <div class="proj-result">Full technical and regulatory architecture established from first principles.</div>
           <div class="proj-skills">0→1 product development · Clinical discovery · Technology decisions · Regulatory strategy</div>
         </div>
@@ -555,8 +610,8 @@
 
       <!-- Card 5: SnS LiDAR -->
       <div class="proj-card rv">
-        <div class="proj-img-wrap">
-          <img src="public/projects/SnS/images/slide_7_img_8.jpg" alt="LiDAR motion capture system" loading="lazy">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/SnS/images/slide_6_img_7.png" alt="Wearable LiDAR belt harness and iPhone-based motion capture setup" loading="lazy">
         </div>
         <div class="proj-body-wrap">
           <div class="proj-top">
@@ -564,9 +619,10 @@
             <div class="proj-badge">Validated</div>
           </div>
           <div class="proj-title">LiDAR Motion Capture — Wearable Assistive Device</div>
-          <div class="proj-text">Designed and built a wearable LiDAR-based motion capture system at TAU's Musculoskeletal Biomechanics Lab to model physiological sit-to-stand movements — a key biomechanical metric for assistive medical devices and rehabilitation assessment.<br><br>Built from scratch across hardware and software: developed custom MATLAB algorithms to extract movement signatures from raw LiDAR signals, then validated accuracy against a gold-standard Instron testing machine across 12 test subjects. The system demonstrated strong tracking fidelity, establishing feasibility for clinical use.</div>
-          <div class="proj-result">Validated across 12 test subjects against Instron gold standard.</div>
-          <div class="proj-skills">Hardware design · MATLAB · Signal processing · Biomechanics · Device validation</div>
+          <div class="proj-text">Clinical biomechanical assessment typically requires dedicated lab equipment, trained technicians, and expensive motion capture systems. The goal here was to replace all of that with two iPhones and a belt.<br><br>I designed and built a complete wearable motion capture system using the LiDAR sensors built into iPhone Pro models — positioning them at the body's center of mass using a custom-designed adjustable belt harness I engineered for stability and comfort during movement. The system tracked sit-to-stand transitions in two axes simultaneously, capturing the full biomechanical signature of the movement.<br><br>The technical work spanned hardware and software end to end: calibrated the LiDAR sensors against an Instron testing machine as gold standard, developed custom MATLAB signal processing algorithms to extract movement sections from continuous recordings, and built computational models to quantify stability metrics — area under the curve, velocity, and acceleration of the center of mass. Validated across 12 test subjects and used the system to assess the effectiveness of an assistive mobility device in reducing fall risk during standing transitions.</div>
+          <div class="proj-result">Validated across 12 test subjects against Instron gold standard. Feasibility for clinical deployment established.</div>
+          <div class="proj-skills">Hardware design · Wearable systems · MATLAB · Signal processing · Device validation · Biomechanics</div>
+          <a href="public/projects/SnS/files/SnS_final_project.pdf" target="_blank" rel="noopener" class="proj-doc-link">Read full paper →</a>
         </div>
       </div>
 
@@ -574,7 +630,7 @@
       <div class="proj-card rv">
         <div class="proj-img-wrap">
           <div class="proj-img-placeholder">
-            <span>Hemodialysis Device Investigation</span>
+            <span>Hemodialysis device investigation</span>
           </div>
         </div>
         <div class="proj-body-wrap">
@@ -583,16 +639,16 @@
             <div class="proj-badge">Completed</div>
           </div>
           <div class="proj-title">Root Cause Investigation — Class II Hemodialysis Device</div>
-          <div class="proj-text">Root-cause investigation for an on-market Class II Home-Hemodialysis device following regulatory-driven material changes. Ran 18-variable data analysis in MATLAB to identify the failure mechanism across a multi-physics system — mechanical, fluidic, and electronic.<br><br>Designed and executed 6 system-level test protocols integrating mechanical, hardware, and software performance. Prepared technical risk communications for senior leadership, translating complex multi-variable findings into clear engineering and regulatory recommendations — my first exposure to how a large regulated-environment company documents and manages design changes under MDR scrutiny.</div>
+          <div class="proj-text">Joining an established regulated-environment company mid-investigation meant getting up to speed on a complex multi-physics system fast — mechanical, fluidic, and electronic — and contributing meaningfully before having the full picture.<br><br>Ran an 18-variable data analysis to identify the failure mechanism, designed and executed six system-level test protocols, and translated the findings into clear technical and regulatory recommendations for senior leadership. My first exposure to how a large medical device company manages design changes under MDR scrutiny — and how much communication discipline that requires.</div>
           <div class="proj-result">Design modification requirements established. MDR compliance maintained.</div>
-          <div class="proj-skills">Multi-variable data analysis · MATLAB · Systems engineering · Test protocol design</div>
+          <div class="proj-skills">Multi-variable analysis · Systems engineering · Test protocol design · Regulatory communication</div>
         </div>
       </div>
 
       <!-- Card 7: MedTech Hackathon -->
       <div class="proj-card rv">
-        <div class="proj-img-wrap">
-          <img src="public/projects/MedTech%20Hackathon/images/7AED81C8-76E1-4847-A5FB-E8FA3A69E46C.JPG" alt="TAU MedTech Hackathon" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'proj-img-placeholder\'><span>MedTech Hackathon</span></div>'">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/MedTech%20Hackathon/files/7AED81C8-76E1-4847-A5FB-E8FA3A69E46C.JPG" alt="TAU MedTech Hackathon event" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'proj-img-placeholder\'><span>MedTech Hackathon</span></div>'">
         </div>
         <div class="proj-body-wrap">
           <div class="proj-top">
@@ -600,16 +656,16 @@
             <div class="proj-badge">Completed</div>
           </div>
           <div class="proj-title">TAU MedTech Hackathon — Healthcare Innovation Ecosystem</div>
-          <div class="proj-text">Co-organized a healthcare innovation competition sponsored by Amazon, Google, Microsoft, Philips, Teva, and IBM. 18 teams, ~200 participants, 6 healthcare challenges. Established partnerships with major medical institutions, translated unstructured clinical needs into actionable engineering challenges, and secured data access agreements.<br><br>Translating clinical problems into structured challenges that engineers can actually solve is itself a form of product management — the same translation skill at a different scale.</div>
+          <div class="proj-text">Translating real clinical problems into challenges engineers can actually solve is a product skill. I co-organized a healthcare innovation competition — 18 teams, ~200 participants, sponsored by Amazon, Google, Microsoft, Philips, Teva, and IBM — and that translation was the core of the work.<br><br>Established partnerships with major medical institutions, structured unmet clinical needs into actionable engineering briefs, and negotiated data access agreements. Built the infrastructure for a cross-institutional ecosystem from scratch.</div>
           <div class="proj-result">Built a cross-institutional healthcare innovation ecosystem from scratch.</div>
-          <div class="proj-skills">Ecosystem building · Strategic partnerships · Clinical translation · Event leadership</div>
+          <div class="proj-skills">Ecosystem building · Clinical translation · Strategic partnerships · Event leadership</div>
         </div>
       </div>
 
       <!-- Card 8: Cell Migration -->
       <div class="proj-card rv">
-        <div class="proj-img-wrap">
-          <img src="public/projects/cell migration/images/pdf_page_11_img_10.jpeg" alt="Cell migration analysis pipeline" loading="lazy">
+        <div class="proj-img-wrap proj-hero--cells">
+          <img src="public/projects/cell%20migration/images/pdf_page_12_img_11.jpeg" alt="Cell migration image processing and analysis pipeline" loading="lazy">
         </div>
         <div class="proj-body-wrap">
           <div class="proj-top">
@@ -617,9 +673,65 @@
             <div class="proj-badge">Academic</div>
           </div>
           <div class="proj-title">Cell Migration Analysis — Image Processing Pipeline</div>
-          <div class="proj-text">Built an automated image processing pipeline to identify and quantify changes in cell morphology over time as cells were exposed to trypsin enzyme — a key variable in tissue engineering and cell culture workflows.<br><br>Developed in MATLAB: segmentation, contrast correction, background normalization, and denoising — enabling systematic morphological tracking across timepoints without manual measurement.</div>
+          <div class="proj-text">Quantifying how cells change shape over time as they respond to a stimulus sounds straightforward until you try to do it systematically across hundreds of images. I built an automated pipeline in MATLAB — segmentation, contrast correction, background normalization, and denoising — that removed manual measurement from the process entirely and enabled consistent morphological tracking across timepoints.<br><br>A contained project, but a clear example of how I approach analytical problems: define what you're measuring, build the tool, remove the variability.</div>
           <div class="proj-result">Automated cell morphology quantification across exposure timepoints.</div>
           <div class="proj-skills">MATLAB · Image segmentation · Cell biology · Signal processing</div>
+        </div>
+      </div>
+
+      <!-- Card 9: R21 Wearable ultrasound (rotator cuff) -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/masters%20projects/images/rotator-cuff-r21-hero.png" alt="Rotator cuff rehabilitation and ultrasound concept from R21 presentation" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Northeastern · MS Bioengineering · Ultrasound</div>
+            <div class="proj-badge">Master's</div>
+          </div>
+          <div class="proj-title">Wearable Ultrasound for Rotator Cuff Rehab — R21-Style Proposal</div>
+          <div class="proj-text">PM&amp;R specialists lack a repeatable way to quantify shoulder rehab progress: conventional ultrasound depends heavily on operator skill, probe pressure, gel, and still patients, so longitudinal comparisons across visits and clinicians break down.<br><br>This NIH-style R21 proposal frames a wearable, wired multi-patch system integrated with a shoulder brace—anchored in published conformable ultrasound patch work—to stabilize coupling, capture anatomy during dynamic motion in therapy, and validate mechanical and biocompatibility milestones before clinical translation. The narrative includes an aspirational track toward MIT ultrasound patch technology as stated future direction (proposal language, not a completed collaboration). The document lays out concrete aims: finalize patch mechanics for brace use, animal biocompatibility, and traditional-US mapping of optimal patch placement and arm positions for cuff imaging.</div>
+          <div class="proj-result">Structured research strategy linking clinical need, patch innovation, and a staged validation plan.</div>
+          <div class="proj-skills">Clinical problem framing · Ultrasound imaging · Wearable integration · Research design · Scientific writing</div>
+          <a href="public/projects/masters%20projects/rotator%20cuff%20ultrasound/R21%20Research%20Proposal%20.docx" target="_blank" rel="noopener" class="proj-doc-link">Research proposal (DOCX) →</a>
+          <a href="public/projects/masters%20projects/rotator%20cuff%20ultrasound/Group%203%20R21%20Presentation.pptx" target="_blank" rel="noopener" class="proj-doc-link">Group presentation (PPTX) →</a>
+        </div>
+      </div>
+
+      <!-- Card 10: Smart stethoscopes -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/masters%20projects/images/smart-stethoscope-hero.png" alt="Smart stethoscope devices and timeline from BIOE 5810 presentation" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Northeastern · MS Bioengineering · Digital health</div>
+            <div class="proj-badge">Master's</div>
+          </div>
+          <div class="proj-title">Smart Stethoscopes — From Acoustics to AI-Assisted Auscultation</div>
+          <div class="proj-text">Analog auscultation still dominates exam rooms, but sensor-rich “smart” scopes are reshaping what’s possible: noise reduction, multi-modal sensing (e.g. ECG alongside phonocardiography), and faster triage with on-device or cloud analytics.<br><br>For BIOE 5810, our team traced that arc from early binaural designs through modern platforms (e.g. Eko-class devices), catalogued limitations of conventional scopes, and articulated how digitization and AI change the clinical value proposition—immediate capture, richer waveforms, and routes toward quicker detection when paired with decision support.</div>
+          <div class="proj-result">Landscape analysis connecting device evolution, technical differentiators, and clinical impact.</div>
+          <div class="proj-skills">Digital health · Medtech landscaping · Team synthesis · Technical communication</div>
+          <a href="public/projects/masters%20projects/Stethoscope_FinalPresentation_BIOE5810.pptx" target="_blank" rel="noopener" class="proj-doc-link">Final presentation (PPTX) →</a>
+        </div>
+      </div>
+
+      <!-- Card 11: Hazard Hue regulatory / design plan -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/masters%20projects/images/hazard-hue-hero.png" alt="Hazard Hue disposable glove concept from project presentation" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Northeastern · MS Bioengineering · Regulatory</div>
+            <div class="proj-badge">Master's</div>
+          </div>
+          <div class="proj-title">Hazard Hue — Disposable Glove With Puncture-Indicating Color Change</div>
+          <div class="proj-text">Hazard Hue is a concept for a disposable medical glove engineered to provide an immediate visual cue when the barrier is breached—reducing needlestick and contamination uncertainty in high-risk procedural settings. Translating that idea into something a regulator can evaluate means design inputs, risk management, verification thinking, and market-access planning in one coherent thread.<br><br>For BIOE 5250, our team produced a full design-plan–style package: device description, design and development overview, design inputs and outputs, linked risk management and V&amp;V, manufacturing and quality strategy, and multi-region regulatory submission paths (EU MDR including country specifics, US, UK, Brazil, Turkey, and post-market surveillance). Supporting material includes GSPR-style mappings, verification procedure scaffolding, and DHF-oriented structure—all as an academic regulatory-systems exercise for a novel safety-oriented barrier device concept.</div>
+          <div class="proj-result">End-to-end design and regulatory documentation framework for a novel safety-oriented wearable.</div>
+          <div class="proj-skills">Design controls · ISO 14971 · MDR / FDA pathways · DHF · Team delivery</div>
+          <a href="public/projects/masters%20projects/Regulatory%20Project%20Final%20Document.docx" target="_blank" rel="noopener" class="proj-doc-link">Full regulatory &amp; design document (DOCX) →</a>
+          <a href="public/projects/masters%20projects/presentation%20(2).pptx" target="_blank" rel="noopener" class="proj-doc-link">Project presentation (PPTX) →</a>
         </div>
       </div>
 
