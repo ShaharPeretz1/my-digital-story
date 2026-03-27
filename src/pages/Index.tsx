@@ -151,8 +151,8 @@ const projects = [
     skills: ["LiDAR Systems", "MATLAB", "Biomechanics", "Wearable Devices", "Signal Processing", "Clinical Research"],
     githubLink: "https://github.com/yourusername/lidar-motion-analysis",
     reportFiles: [
-      { name: "Research Report", url: "/assets/reports/lidar-full-report.pdf" },
-      { name: "Research Poster", url: "/assets/reports/lidar-poster.pdf" }
+      { name: "Research Report", url: "/projects/SnS/files/SnS final project - Shahar and Shani.pdf" },
+      { name: "Research Poster", url: "/projects/SnS/files/__poster - SitnStand_for checking - 70X100 - ML.pptx.pdf" }
     ],
     externalLink: null,
     images: [
