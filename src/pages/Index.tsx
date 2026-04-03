@@ -199,41 +199,6 @@ const projects = [
       "/assets/projects/ml-results.jpg"
     ]
   },
-  {
-    id: "nxstage",
-    title: "Hemodialysis System Analysis",
-    subtitle: "Medical Device Validation",
-    category: "medical-devices",
-    discipline: "System Engineering • Regulatory Compliance • V&V",
-    organization: "NxStage Medical (Fresenius)",
-    role: "R&D System Engineer II",
-    duration: "2025 (Current)",
-    image: "/assets/projects/hemodialysis.jpg",
-    shortDescription: "Root-cause analysis and validation testing for Class II home hemodialysis device.",
-    fullDescription: `Conducting comprehensive investigation of on-market hemodialysis device following 
-    regulatory-driven material changes. Designed multi-variable test protocols integrating mechanical, 
-    hardware, and software validation. Ensuring continued device safety and MDR compliance.`,
-    challenge: "Validate device performance after material substitution while maintaining regulatory compliance and patient safety.",
-    approach: [
-      "Multi-variable data analysis in MATLAB",
-      "Designed 6 comprehensive system-level test protocols",
-      "Integrated mechanical, hardware, software testing",
-      "Cross-team collaboration (engineering, quality, regulatory)"
-    ],
-    outcomes: [
-      "Successfully validated design modifications",
-      "Maintained MDR compliance throughout",
-      "Framework for future change evaluations",
-      "Continued device reliability ensured"
-    ],
-    skills: ["MATLAB", "System Engineering", "Root-Cause Analysis", "V&V", "MDR", "21 CFR 820"],
-    githubLink: null,
-    reportFiles: [],
-    externalLink: null,
-    images: [
-      "/assets/projects/hemodialysis.jpg"
-    ]
-  },
 ];
 
 const Index = () => {
