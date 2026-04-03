@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import projectsData from '../public/projects/projects.json';
+import projectsData from '../../public/projects/projects.json';
 
 const ProjectCard = ({ project }) => {
   return (

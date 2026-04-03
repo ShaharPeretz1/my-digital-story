@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import projectsData from '../public/projects/projects.json';
+import projectsData from '../../public/projects/projects.json';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
