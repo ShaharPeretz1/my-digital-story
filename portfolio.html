@@ -564,7 +564,25 @@
 
     <div class="proj-grid">
 
-      <!-- Card 1: Colonoscopy FDA -->
+      <!-- Card 1: Prior Authorization Assistant — RAG -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/prior-auth-rag/screenshot.png" alt="Prior Authorization Assistant — RAG decision support UI" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;proj-img-placeholder&quot;><span>Prior Authorization Assistant</span></div>'">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Personal Project · AI/RAG · Healthcare</div>
+          </div>
+          <div class="proj-title">Prior Authorization Assistant — RAG from Scratch</div>
+          <div class="proj-text">I built an end-to-end RAG (retrieval-augmented generation) system from scratch — no LangChain, no third-party vector database — to help a clinical reviewer decide whether a patient meets the coverage criteria for a procedure under their insurance policy. Stack: FastAPI + Next.js 16 + Mistral, with a custom BM25 index, a NumPy vector store, and a hybrid retriever I empirically calibrated against 32 hand-crafted golden queries and 83 synthetic QA pairs.<br><br>The system has an active UI: a nurse opens a worklist, picks a patient, hits "Analyze," and within seconds gets a structured verdict — APPROVED, DENIED, NEEDS_MORE_INFO, or INSUFFICIENT_EVIDENCE — with inline citations into the source documents. I built clinical-safety guardrails throughout: an intent classifier short-circuits unsafe or off-topic prompts before generation, similarity and version filters drop weak retrievals, and the INSUFFICIENT_EVIDENCE fallback ensures the system never fabricates on weak evidence.</div>
+          <div class="proj-result">5/5 verdicts correct on an adversarial test set. 251 hermetic tests run in ~20 seconds.</div>
+          <div class="proj-skills">RAG · LLM APIs (Mistral) · Hybrid retrieval (BM25 + semantic) · FastAPI · Next.js · Healthcare AI · Guardrails design</div>
+          <a href="https://prior-auth-agent.vercel.app" target="_blank" rel="noopener" class="proj-doc-link">Live UI — try it →</a>
+          <a href="https://github.com/ShaharPeretz1/prior-auth-assistant" target="_blank" rel="noopener" class="proj-doc-link">Source code on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Colonoscopy FDA -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/assets/giview.png" alt="GI View colonoscopy camera" loading="lazy">
@@ -580,7 +598,7 @@
         </div>
       </div>
 
-      <!-- Card 2: Yield -->
+      <!-- Card 3: Yield -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/assets/geometric distorsion test setup from protocol.png" alt="Optical test setup" loading="lazy">
@@ -596,7 +614,7 @@
         </div>
       </div>
 
-      <!-- Card 3: Visualization -->
+      <!-- Card 4: Visualization -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--color">
           <img src="public/assets/color correction SW.png" alt="Color calibration software" loading="lazy">
@@ -612,7 +630,7 @@
         </div>
       </div>
 
-      <!-- Card 4: Gastroscopy 0→1 -->
+      <!-- Card 5: Gastroscopy 0→1 -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/assets/gastro.jpg" alt="Image uniformity optical test setup" loading="lazy">
@@ -628,7 +646,7 @@
         </div>
       </div>
 
-      <!-- Card 5: SnS LiDAR -->
+      <!-- Card 6: SnS LiDAR -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/projects/SnS/images/slide_6_img_7.png" alt="Wearable LiDAR belt harness and iPhone-based motion capture setup" loading="lazy">
@@ -646,7 +664,7 @@
         </div>
       </div>
 
-      <!-- Card 6: NxStage -->
+      <!-- Card 7: NxStage -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/assets/treatment_infographic.png" alt="Hemodialysis device investigation" loading="lazy">
@@ -662,7 +680,7 @@
         </div>
       </div>
 
-      <!-- Card 7: MedTech Hackathon -->
+      <!-- Card 8: MedTech Hackathon -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/projects/MedTech%20Hackathon/files/7AED81C8-76E1-4847-A5FB-E8FA3A69E46C.JPG" alt="TAU MedTech Hackathon event" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'proj-img-placeholder\'><span>MedTech Hackathon</span></div>'">
@@ -679,7 +697,7 @@
         </div>
       </div>
 
-      <!-- Card 8: Cell Migration -->
+      <!-- Card 9: Cell Migration -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--cells">
           <img src="public/projects/cell%20migration/images/pdf_page_12_img_11.jpeg" alt="Cell migration image processing and analysis pipeline" loading="lazy">
@@ -696,7 +714,7 @@
         </div>
       </div>
 
-      <!-- Card 9: EMV (Eulerian video magnification) -->
+      <!-- Card 10: EMV (Eulerian video magnification) -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/projects/EMV/images/EMV.png" alt="Eulerian video magnification — motion-amplified video frames" loading="lazy">
@@ -713,7 +731,7 @@
         </div>
       </div>
 
-      <!-- Card 10: Pulmonary function -->
+      <!-- Card 11: Pulmonary function -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/projects/Pulmunary%20Function/images/pdf_page_5_img_6.png" alt="Pulmonary function testing — flow-volume analysis" loading="lazy">
@@ -730,7 +748,7 @@
         </div>
       </div>
 
-      <!-- Card 11: Thermal conductivity -->
+      <!-- Card 12: Thermal conductivity -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
           <img src="public/projects/Thermal%20Conductivity%20/images/doc_img_0.png" alt="Thermal conductivity measurement setup — heat-flow meter" loading="lazy">
@@ -748,7 +766,7 @@
         </div>
       </div>
 
-      <!-- Card 12: R21 Wearable ultrasound (rotator cuff) -->
+      <!-- Card 13: R21 Wearable ultrasound (rotator cuff) -->
       <div class="proj-card rv">
         <div class="proj-img-wrap">
           <img src="public/projects/masters%20projects/images/rotator-cuff-r21-hero.png" alt="Rotator cuff rehabilitation and ultrasound concept from R21 presentation" loading="lazy">
@@ -766,7 +784,7 @@
         </div>
       </div>
 
-      <!-- Card 13: Smart stethoscopes -->
+      <!-- Card 14: Smart stethoscopes -->
       <div class="proj-card rv">
         <div class="proj-img-wrap">
           <img src="public/projects/masters%20projects/images/smart-stethoscope-hero.png" alt="Smart stethoscope devices" loading="lazy">
@@ -783,7 +801,7 @@
         </div>
       </div>
 
-      <!-- Card 14: Hazard Hue regulatory / design plan -->
+      <!-- Card 15: Hazard Hue regulatory / design plan -->
       <div class="proj-card rv">
         <div class="proj-img-wrap">
           <img src="public/projects/masters%20projects/images/hazard-hue-hero.png" alt="Hazard Hue disposable glove concept from project presentation" loading="lazy">
