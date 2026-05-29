@@ -577,7 +577,7 @@
           <div class="proj-text">I built an end-to-end RAG (retrieval-augmented generation) system from scratch — no LangChain, no third-party vector database — to help a clinical reviewer decide whether a patient meets the coverage criteria for a procedure under their insurance policy. Stack: FastAPI + Next.js 16 + Mistral, with a custom BM25 index, a NumPy vector store, and a hybrid retriever I empirically calibrated against 32 hand-crafted golden queries and 83 synthetic QA pairs.<br><br>The system has an active UI: a nurse opens a worklist, picks a patient, hits "Analyze," and within seconds gets a structured verdict — APPROVED, DENIED, NEEDS_MORE_INFO, or INSUFFICIENT_EVIDENCE — with inline citations into the source documents. I built clinical-safety guardrails throughout: an intent classifier short-circuits unsafe or off-topic prompts before generation, similarity and version filters drop weak retrievals, and the INSUFFICIENT_EVIDENCE fallback ensures the system never fabricates on weak evidence.</div>
           <div class="proj-result">5/5 verdicts correct on an adversarial test set. 251 hermetic tests run in ~20 seconds.</div>
           <div class="proj-skills">RAG · LLM APIs (Mistral) · Hybrid retrieval (BM25 + semantic) · FastAPI · Next.js · Healthcare AI · Guardrails design</div>
-          <a href="https://prior-auth-agent.vercel.app" target="_blank" rel="noopener" class="proj-doc-link">Live UI — try it →</a>
+          <a href="https://prior-auth-assistant.vercel.app" target="_blank" rel="noopener" class="proj-doc-link">Live UI — try it →</a>
           <a href="https://github.com/ShaharPeretz1/prior-auth-assistant" target="_blank" rel="noopener" class="proj-doc-link">Source code on GitHub →</a>
         </div>
       </div>
