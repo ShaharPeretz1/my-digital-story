@@ -7,436 +7,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* ─── Variables ─────────────────────────────────────────── */
-    :root {
-      --bg:        #F2EFE7;
-      --bg2:       #E8E4DA;
-      --bg3:       #FFFFFF;
-      --bg-dark:   #1C3425;
-      --bg-dark2:  #152A1D;
-      --gd:        #1C3425;
-      --gm:        #2E5C40;
-      --gb:        #3D7A52;
-      --gb-hover:  #2E5C40;
-      --t1:        #1E2118;
-      --t2:        #7A7568;
-      --tw:        #0D130F;
-      --t-light:   #EDE8DC;
-      --border:    rgba(46,92,64,0.18);
-      --border-dk: rgba(255,255,255,0.12);
-      --fd:        'Clash Display', sans-serif;
-      --fb:        'DM Sans', sans-serif;
-      --fm:        'DM Mono', monospace;
-      --shadow:    0 2px 16px rgba(28,52,37,0.08);
-      --shadow-lg: 0 8px 40px rgba(28,52,37,0.12);
-    }
-
-    /* ─── Reset ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--t1);
-      font-family: var(--fb);
-      font-size: 17px;
-      line-height: 1.72;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    p { margin-bottom: 18px; }
-    p:last-child { margin-bottom: 0; }
-
-    /* ─── Nav ────────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 22px 56px;
-      display: flex; justify-content: space-between; align-items: center;
-      transition: background .3s, backdrop-filter .3s, box-shadow .3s;
-    }
-    nav.sc {
-      background: rgba(242,239,231,0.92);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 1px 0 var(--border);
-    }
-    .nav-logo {
-      font-family: var(--fd); font-size: 15px; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase; color: var(--gd);
-    }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-family: var(--fm); font-size: 11px; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--t2);
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--gm); }
-
-    /* ─── Shared Layout ──────────────────────────────────────── */
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
-    section { padding: 108px 0; }
-    .sec-label {
-      font-family: var(--fm); font-size: 11px; letter-spacing: .25em;
-      text-transform: uppercase; color: var(--gb); margin-bottom: 18px;
-    }
-    .sec-label-lt {
-      font-family: var(--fm); font-size: 11px; letter-spacing: .25em;
-      text-transform: uppercase; color: rgba(160,210,180,0.9); margin-bottom: 18px;
-    }
-    .sec-h {
-      font-family: var(--fd);
-      font-size: clamp(30px, 4vw, 50px);
-      font-weight: 700; color: var(--tw); line-height: 1.12; margin-bottom: 28px;
-    }
-    .sec-h-lt {
-      font-family: var(--fd);
-      font-size: clamp(30px, 4vw, 50px);
-      font-weight: 700; color: #FFFFFF; line-height: 1.12; margin-bottom: 28px;
-    }
-    .divider { height: 1px; background: var(--border); }
-
-    /* ─── Reveal animation ───────────────────────────────────── */
-    .rv { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
-    .rv.in { opacity: 1; transform: none; }
-
-    /* ─── Buttons ────────────────────────────────────────────── */
-    .btn {
-      display: inline-block; padding: 13px 30px;
-      font-family: var(--fb); font-size: 14px; font-weight: 600;
-      letter-spacing: .04em; cursor: pointer; transition: all .2s;
-      border: none;
-    }
-    .btn-g { background: var(--gd); color: #fff; }
-    .btn-g:hover { background: var(--gm); transform: translateY(-1px); }
-    .btn-o { background: transparent; color: var(--gd); border: 1.5px solid var(--gm); }
-    .btn-o:hover { background: var(--gd); color: #fff; }
-    .btn-lt { background: #fff; color: var(--gd); font-weight: 700; }
-    .btn-lt:hover { background: var(--t-light); transform: translateY(-1px); }
-
-    /* ─── HERO ───────────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; padding: 140px 56px 80px;
-      max-width: 1180px; margin: 0 auto; position: relative;
-    }
-    .hero-name {
-      font-family: var(--fm); font-size: 12px; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--gb); margin-bottom: 22px;
-      opacity: 0; animation: fu .8s .15s forwards;
-    }
-    .hero-h {
-      font-family: var(--fd);
-      font-size: clamp(36px, 5.5vw, 64px);
-      font-weight: 700; color: var(--gd); line-height: 1.02; margin-bottom: 30px;
-      opacity: 0; animation: fu .9s .35s forwards;
-    }
-    .hero-sub {
-      font-size: clamp(16px, 1.8vw, 19px); color: var(--t1);
-      max-width: 560px; line-height: 1.65; margin-bottom: 22px;
-      opacity: 0; animation: fu .9s .55s forwards;
-    }
-    .hero-tags {
-      font-family: var(--fm); font-size: 12px; letter-spacing: .1em;
-      color: var(--t2); margin-bottom: 44px;
-      opacity: 0; animation: fu .9s .7s forwards;
-    }
-    .hero-tags span { margin: 0 10px; color: var(--gm); }
-    .hero-ctas { display: flex; gap: 14px; opacity: 0; animation: fu .9s .85s forwards; }
-    .hero-hint {
-      margin-top: auto; padding-top: 60px;
-      font-family: var(--fm); font-size: 11px; letter-spacing: .15em;
-      color: var(--t2); text-transform: uppercase; display: flex; align-items: center; gap: 12px;
-      opacity: 0; animation: fu 1s 1.1s forwards;
-    }
-    .hero-hint::before { content:''; display:block; width:36px; height:1px; background:var(--gm); }
-
-    /* ─── Metrics bar (DARK) ──────────────────────────────────── */
-    .metrics {
-      background: var(--bg-dark);
-      padding: 52px 0;
-    }
-    .metrics-grid {
-      display: grid; grid-template-columns: repeat(4,1fr); gap: 24px;
-      max-width: 1180px; margin: 0 auto; padding: 0 48px;
-    }
-    .met { display: flex; flex-direction: column; gap: 6px; }
-    .met-n {
-      font-family: var(--fd); font-size: 46px; font-weight: 700;
-      color: #fff; line-height: 1;
-    }
-    .met-n .acc { color: #7EC89A; }
-    .met-l {
-      font-family: var(--fm); font-size: 11px; letter-spacing: .1em;
-      color: rgba(237,232,220,0.6); text-transform: uppercase; line-height: 1.5;
-    }
-
-    /* ─── About ──────────────────────────────────────────────── */
-    #about { background: var(--bg); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: start;
-    }
-    .about-text p { font-size: 16px; line-height: 1.82; color: var(--t1); }
-    .creds { margin-top: 44px; display: flex; flex-direction: column; gap: 18px; }
-    .cred {
-      padding-left: 16px; border-left: 2px solid var(--gm);
-      display: flex; flex-direction: column; gap: 3px;
-    }
-    .cred-t { font-weight: 600; font-size: 14px; color: var(--tw); }
-    .cred-s { font-family: var(--fm); font-size: 11px; color: var(--t2); letter-spacing: .04em; }
-    .photo-box {
-      background: var(--bg2); border: 1px solid var(--border);
-      display: flex; align-items: flex-start; justify-content: center;
-      overflow: hidden; position: sticky; top: 100px;
-    }
-    .photo-box img { width: 100%; height: auto; object-fit: contain; display: block; }
-    .photo-box .ph-hint {
-      font-family: var(--fm); font-size: 11px; color: var(--t2);
-      text-align: center; line-height: 1.9; letter-spacing: .04em; padding: 24px;
-    }
-
-    /* ─── Philosophy (DARK) ─────────────────────────────────── */
-    #philosophy { background: var(--bg-dark); padding: 108px 0; }
-    .phil-intro { font-size: 18px; color: rgba(237,232,220,0.8); max-width: 620px; margin-bottom: 60px; line-height: 1.72; }
-    .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .pillar {
-      background: rgba(255,255,255,0.05); padding: 40px 34px;
-      transition: background .25s; cursor: default; border: 1px solid var(--border-dk);
-    }
-    .pillar:hover { background: rgba(255,255,255,0.09); }
-    .pillar-n {
-      font-family: var(--fd); font-size: 58px; font-weight: 700;
-      color: #7EC89A; line-height: 1; margin-bottom: 22px; opacity: .5;
-    }
-    .pillar-t {
-      font-family: var(--fd); font-size: 19px; font-weight: 600;
-      color: #fff; margin-bottom: 14px; line-height: 1.3;
-    }
-    .pillar-b { font-size: 14.5px; color: rgba(237,232,220,0.65); line-height: 1.78; }
-
-    /* ─── Projects ───────────────────────────────────────────── */
-    #projects { background: var(--bg2); }
-    .proj-intro { font-size: 16px; color: var(--t2); max-width: 560px; margin-bottom: 52px; }
-    .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
-    .proj-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: box-shadow .28s ease, transform .28s ease, border-color .28s ease;
-      display: flex; flex-direction: column;
-    }
-    .proj-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-      border-color: rgba(46,92,64,0.28);
-    }
-    .proj-img-wrap {
-      width: 100%; height: 272px; overflow: hidden;
-      background: var(--bg2); flex-shrink: 0; position: relative;
-    }
-    .proj-img-wrap::after {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(to top, rgba(13,19,15,0.14) 0%, transparent 52%);
-      border-bottom: 1px solid rgba(46,92,64,0.1);
-    }
-    .proj-img-wrap:has(.proj-img-placeholder)::after {
-      background: linear-gradient(to top, rgba(0,0,0,0.28) 0%, transparent 50%);
-      border-bottom-color: rgba(255,255,255,0.1);
-    }
-    .proj-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center center;
-      display: block;
-      transition: transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .proj-card:hover .proj-img-wrap img { transform: scale(1.045); }
-    /* Mixed aspect ratios — letterbox so subjects aren’t clipped (cover crops harshly) */
-    .proj-hero--contain {
-      background: linear-gradient(168deg, #ebe8e1 0%, var(--bg2) 42%, #e3e9e4 100%);
-    }
-    .proj-hero--contain::after {
-      background: linear-gradient(to top, rgba(13,19,15,0.07) 0%, transparent 58%);
-    }
-    .proj-hero--contain img {
-      object-fit: contain;
-      object-position: center center;
-      padding: 12px 16px;
-    }
-    .proj-card:hover .proj-hero--contain img { transform: none; }
-    .proj-hero--cells img { object-position: center center; }
-    /* UI / screenshot assets — letterbox instead of heavy upscale-crop */
-    .proj-hero--color {
-      background: linear-gradient(165deg, #e4ebe4 0%, var(--bg2) 48%, #dfe8e0 100%);
-    }
-    .proj-hero--color img {
-      object-fit: contain;
-      padding: 14px 18px;
-      transform: none;
-    }
-    .proj-card:hover .proj-hero--color img { transform: none; }
-    .proj-img-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(148deg, #1a3024 0%, var(--gm) 42%, #234d35 100%);
-      position: relative;
-    }
-    .proj-img-placeholder::after {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 90% 70% at 50% 100%, rgba(0,0,0,0.22), transparent 55%);
-    }
-    .proj-img-placeholder span {
-      font-family: var(--fm); font-size: 10px;
-      font-weight: 500; color: rgba(237,232,220,0.45); letter-spacing: .2em;
-      text-align: center; padding: 0 28px; line-height: 1.65;
-      text-transform: uppercase; position: relative; z-index: 1;
-      max-width: 280px;
-    }
-    .proj-doc-link {
-      display: inline-block;
-      margin-top: 18px;
-      font-family: var(--fm); font-size: 11px; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--gb);
-      border-bottom: 1px solid var(--border); padding-bottom: 2px;
-      transition: color .2s, border-color .2s;
-    }
-    .proj-doc-link + .proj-doc-link { margin-top: 10px; }
-    .proj-doc-link:hover { color: var(--gm); border-color: rgba(46,92,64,0.35); }
-    .proj-body-wrap { padding: 28px 30px 30px; display: flex; flex-direction: column; flex: 1; }
-    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 8px; }
-    .proj-tag { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; color: var(--gb); text-transform: uppercase; }
-    .proj-badge {
-      font-family: var(--fm); font-size: 10px; letter-spacing: .07em;
-      color: var(--t2); border: 1px solid var(--border); padding: 3px 10px;
-      white-space: nowrap; flex-shrink: 0; background: var(--bg);
-    }
-    .proj-title {
-      font-family: var(--fd); font-size: 20px; font-weight: 600;
-      color: var(--tw); margin-bottom: 12px; line-height: 1.25;
-    }
-    .proj-text { font-size: 14px; color: var(--t2); line-height: 1.76; margin-bottom: 20px; flex: 1; }
-    .proj-result {
-      border-left: 2px solid var(--gb); padding-left: 14px;
-      margin-bottom: 18px; font-size: 13.5px; color: var(--gd); font-weight: 500;
-    }
-    .proj-skills { font-family: var(--fm); font-size: 10px; letter-spacing: .07em; color: var(--t2); text-transform: uppercase; }
-
-    /* ─── Thinking (Books & Podcasts) ───────────────────────── */
-    #thinking { background: var(--bg); }
-    .think-intro { font-size: 16px; color: var(--t2); max-width: 540px; margin-bottom: 60px; }
-    .reads-section { margin-bottom: 56px; }
-    .reads-label {
-      font-family: var(--fm); font-size: 11px; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--gb); margin-bottom: 28px;
-      display: flex; align-items: center; gap: 14px;
-    }
-    .reads-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .books-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    }
-    .podcasts-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    }
-    .read-card {
-      background: var(--bg3); border: 1px solid var(--border);
-      overflow: hidden; transition: box-shadow .25s, transform .22s;
-      display: flex; flex-direction: column;
-    }
-    .read-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .read-cover {
-      width: 100%; overflow: hidden; background: var(--bg2);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .book-cover { aspect-ratio: 2/3; }
-    .podcast-cover { aspect-ratio: 1/1; }
-    .read-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
-    .read-card:hover .read-cover img { transform: scale(1.04); }
-    .read-cover-placeholder {
-      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-      background: var(--bg2); font-family: var(--fm); font-size: 11px;
-      color: var(--t2); letter-spacing: .1em; text-transform: uppercase;
-    }
-    .read-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
-    .read-type { font-family: var(--fm); font-size: 10px; letter-spacing: .15em; color: var(--gb); text-transform: uppercase; margin-bottom: 8px; }
-    .read-title { font-family: var(--fd); font-size: 15px; font-weight: 600; color: var(--tw); line-height: 1.3; margin-bottom: 6px; }
-    .read-author { font-family: var(--fm); font-size: 11px; color: var(--t2); letter-spacing: .04em; }
-
-    /* Post modals */
-    .modal {
-      display: none; position: fixed; inset: 0;
-      background: rgba(242,239,231,0.97); z-index: 200;
-      overflow-y: auto; padding: 80px 48px;
-    }
-    .modal.open { display: block; }
-    .modal-inner { max-width: 680px; margin: 0 auto; }
-    .modal-back {
-      display: inline-block; margin-bottom: 44px;
-      font-family: var(--fm); font-size: 12px; letter-spacing: .15em;
-      color: var(--gb); text-transform: uppercase; cursor: pointer;
-      background: none; border: none;
-    }
-    .modal-title {
-      font-family: var(--fd); font-size: clamp(28px,4vw,44px);
-      font-weight: 700; color: var(--gd); margin-bottom: 36px; line-height: 1.12;
-    }
-    .modal-body p { font-size: 17px; color: var(--t1); line-height: 1.88; }
-
-    /* ─── What's Next (DARK) ────────────────────────────────── */
-    #next { background: var(--bg-dark); padding: 108px 0; }
-    .next-body { font-size: 18px; color: rgba(237,232,220,0.85); max-width: 700px; margin-bottom: 44px; line-height: 1.78; }
-    .next-body p { margin-bottom: 20px; }
-
-    /* ─── Contact ────────────────────────────────────────────── */
-    #contact { background: var(--bg); border-top: 1px solid var(--border); padding: 80px 0 60px; }
-    .contact-row { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 40px; }
-    .contact-h {
-      font-family: var(--fd); font-size: clamp(38px,6vw,68px);
-      font-weight: 700; color: var(--gd); line-height: 1.05; margin-bottom: 20px;
-    }
-    .contact-email {
-      font-family: var(--fd); font-size: clamp(17px,2.2vw,26px);
-      font-weight: 600; color: var(--gb); transition: color .2s;
-    }
-    .contact-email:hover { color: var(--gd); }
-    .contact-note { font-size: 13px; color: var(--t2); margin-top: 10px; }
-    .contact-links { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
-    .clink {
-      font-family: var(--fm); font-size: 12px; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--t2); transition: color .2s;
-    }
-    .clink:hover { color: var(--gd); }
-    .footer-bar {
-      margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
-      font-family: var(--fm); font-size: 11px; letter-spacing: .07em;
-      color: var(--t2); text-transform: uppercase;
-    }
-
-    /* ─── Keyframes ──────────────────────────────────────────── */
-    @keyframes fu {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: none; }
-    }
-
-    /* ─── Responsive ─────────────────────────────────────────── */
-    @media (max-width: 960px) {
-      nav { padding: 18px 24px; }
-      .nav-links { display: none; }
-      #hero { padding: 120px 24px 64px; }
-      .wrap { padding: 0 24px; }
-      section { padding: 72px 0; }
-      #philosophy, #next { padding: 72px 0; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-text { order: 2; }
-      .photo-box { position: static; max-width: 320px; margin: 0 auto; overflow: visible; }
-      .photo-box img { width: 100%; height: auto; object-fit: contain; }
-      .pillars { grid-template-columns: 1fr; }
-      .proj-grid { grid-template-columns: 1fr; }
-      .metrics-grid { grid-template-columns: repeat(2,1fr); padding: 0 24px; }
-      .contact-row { flex-direction: column; align-items: flex-start; }
-      .contact-links { align-items: flex-start; }
-      .books-grid { grid-template-columns: repeat(2, 1fr); }
-      .podcasts-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -445,7 +16,7 @@
   <div class="nav-logo">Shahar Berger</div>
   <ul class="nav-links">
     <li><a href="#about">Background</a></li>
-    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#resume">Resume</a></li>
     <li><a href="#projects">Work</a></li>
     <li><a href="#thinking">Reads</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -455,7 +26,7 @@
 <!-- ── HERO ────────────────────────────────────────────────── -->
 <div id="hero">
   <div class="hero-name">Shahar Berger</div>
-  <h1 class="hero-h">Building things that matter is simply what I care about.</h1>
+  <h1 class="hero-h">Building things that matter.</h1>
   <p class="hero-sub">Technical AI Product Manager for healthcare.<br>Native AI engineer. Native bioengineer. 0→1 product leader.</p>
   <div class="hero-tags">
     Applied AI <span>·</span> RAG &amp; LLMs <span>·</span> 3 FDA Class II Devices <span>·</span> MS Bioengineering <span>·</span> Scrum 0→1
@@ -464,7 +35,6 @@
     <a href="#projects" class="btn btn-g">See my work</a>
     <a href="#contact" class="btn btn-o">Get in touch</a>
   </div>
-  <div class="hero-hint">Scroll to explore</div>
 </div>
 
 <!-- ── METRICS (dark band) ──────────────────────────────────── -->
@@ -495,32 +65,10 @@
     <div class="about-grid">
       <div class="about-text rv">
         <div class="sec-label">Background</div>
-        <h2 class="sec-h">I speak engineer.<br>I think product.<br>I build with AI.</h2>
-        <p>I'm drawn to problems that don't fit neatly into one box. The kind that require you to hold multiple systems at once, understand how they interact, and find the path that only becomes visible when you see the whole picture. That's where I feel most alive - professionally and personally.
-        <p>The work I'm doing now lives at the intersection of three native disciplines for me: <strong>AI engineering</strong> — I build RAG systems, retrieval pipelines, and LLM-backed tools end to end; <strong>bioengineering</strong> — five years of clinical and device depth; and <strong>product management</strong> — leading cross-functional 0→1 programs on a Scrum cadence, from discovery through FDA approval. Most PMs cover one of these. The intersection is where I'm most useful.
-        <p>The way I approach problems got shaped early. In undergrad, a course paired my team with a woman living with a vision disorder. We visited her at home to understand her daily routine, and she surfaced the obstacle that mattered most to her: choosing the right cooking plan on her Ninja machine — she couldn't tell the buttons apart. So we set out to build something impressive — restructure the machine, connect it to an app, engineer something complex enough to show how good of engineers we are. We came back to her excited about how innovative the plan was.
-        <p>She was confused. So we stopped pitching and started listening — really trying to understand her pain, what she actually struggled with, what would make a difference for her specifically. And the answer was far simpler than anything we'd designed: tailor the buttons she already used so her fingers could distinguish them. We finalized the tactile details, gave her samples to choose from, and that was it.
-        <p>That's the lesson I keep coming back to. The job isn't to build the most advanced or impressive thing — it's to understand the real problem and solve it in the simplest, most elegant way. The solution doesn't have to be innovative; it has to be right. And the only way to find it is to actually listen: learn the person's pain, see the problem from their side, and have the discipline to choose the elegant answer over the impressive one. That's exactly the kind of work I want to do.
-        <p>I came up through R&D and engineering, which means I've been on the other side of the table. I know what it feels like when a PM doesn't understand what they're asking for — and I know how much faster things move when they do.
-        <p>I'm at my best when I own something end to end. When I can define what success looks like and build toward it systematically. That's the kind of work I'm here to do.
-        <div class="creds">
-          <div class="cred">
-            <div class="cred-t">MS Bioengineering · Northeastern University</div>
-            <div class="cred-s">2024–2026 · GPA 4.0 · Boston, MA</div>
-          </div>
-          <div class="cred">
-            <div class="cred-t">BS Biomedical Engineering · Tel Aviv University</div>
-            <div class="cred-s">2019–2023 · Dean's List Excellence Award</div>
-          </div>
-          <div class="cred">
-            <div class="cred-t">Product Manager · GI View Ltd.</div>
-            <div class="cred-s">2022–2024 · 3 FDA Class II Devices · IL</div>
-          </div>
-          <div class="cred">
-            <div class="cred-t">R&D Systems Engineer II · NxStage Medical (Fresenius)</div>
-            <div class="cred-s">2025 · Home Hemodialysis · Class II Device</div>
-          </div>
-        </div>
+        <h2 class="sec-h">I believe product today means building,<br>not just speccing.</h2>
+        <p>What draws me to a product role in healthcare is a particular kind of problem: the cross-disciplinary, slightly messy kind where you have to understand a few systems at once before the right answer shows up.
+        <p>That instinct got tested early. In undergrad, a class paired my team with a woman living with a vision disorder. She couldn't tell the buttons apart on her cooking machine, so we set out to build something impressive: connect it to an app, re-engineer the whole thing. She was politely confused. When we finally stopped pitching and started listening, the real fix was almost embarrassingly simple. We changed the buttons she already used so her fingers could distinguish them. That stuck with me. The job isn't to build the most advanced thing; it's to understand the real problem and solve it in the simplest way that works.
+        <p>I came up through R&D and engineering, so I've spent plenty of time on the other side of the table from product, and I've seen how much smoother things go when the person defining the work actually understands it. That's the kind of PM I try to be.
       </div>
 
       <div class="photo-box rv">
@@ -531,297 +79,132 @@
   </div>
 </section>
 
-<!-- ── PHILOSOPHY (dark) ─────────────────────────────────────── -->
-<section id="philosophy">
+<!-- ── RESUME ────────────────────────────────────────────────── -->
+<section id="resume">
   <div class="wrap">
-    <div class="sec-label-lt rv">Philosophy</div>
-    <h2 class="sec-h-lt rv">A different way of thinking<br>about product in biotech.</h2>
-    <p class="phil-intro rv">In biotech, product decisions have consequences that most industries never have to think about. That changes how you need to think about the work. Here's what I've learned building medical devices from the ground up.</p>
-    <div class="pillars">
-      <div class="pillar rv">
-        <div class="pillar-n">01</div>
-        <div class="pillar-t">Technical depth is a product skill.</div>
-        <div class="pillar-b">Technical depth isn't a bonus in biotech PM — it's the job. When you understand the science, you don't just follow the conversation — you shape it. You ask better questions, catch bad assumptions early, and size the effort realistically before it becomes a problem. The difference between a PM who understands the underlying system and one who doesn't isn't a matter of style. It shows up in every estimate, every tradeoff, every conversation with an engineer who's deciding whether to tell you the whole truth or the easy version.</div>
+    <div class="sec-label rv">Resume</div>
+    <h2 class="sec-h rv">My experience.</h2>
+    <p class="resume-intro rv">Full resume here: <a href="public/Shahar_Berger_PM.pdf" target="_blank" rel="noopener">resume (PDF) →</a></p>
+
+    <!-- Work Experience -->
+    <div class="resume-block rv">
+      <div class="resume-block-label">Work Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div class="exp-title">System Engineer II</div>
+          <div class="exp-when">2025</div>
+        </div>
+        <div class="exp-org">NxStage Medical (Fresenius Medical Care) · MA · Class II home hemodialysis</div>
+        <ul class="exp-bullets">
+          <li>Ran an <strong>18-variable MATLAB root-cause analysis</strong> on an on-market Class II home-hemodialysis device after a regulatory-driven material change, delivering validated design modifications under MDR scrutiny.</li>
+          <li>Designed and executed <strong>6 system-level test protocols</strong> spanning mechanical, electrical, firmware, and software, with status reporting to senior leadership.</li>
+        </ul>
       </div>
-      <div class="pillar rv">
-        <div class="pillar-n">02</div>
-        <div class="pillar-t">The breakthrough lives between the disciplines.</div>
-        <div class="pillar-b">The problems worth solving in biotech don't live cleanly inside one field. The real leverage sits at the intersection — where biology meets hardware, where engineering meets regulation, where what's technically possible meets what a clinician will actually use under pressure. That's where I've always found myself drawn to work. Not because the boundaries are interesting in the abstract, but because that's where the solution usually turns out to be hiding.</div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div class="exp-title">Product Manager</div>
+          <div class="exp-when">2022–2024</div>
+        </div>
+        <div class="exp-org">GI View Ltd. · IL · 3 FDA Class II devices</div>
+        <ul class="exp-bullets">
+          <li>Managed <strong>3 concurrent FDA Class II endoscopy device programs</strong> as product lead — owning roadmap, sprint planning, risk management, and regulatory documentation from concept through submission.</li>
+          <li>Drove an <strong>~90% imaging-quality improvement</strong> through ML-based image processing and CMOS sensor calibration; shipped an automated clinical-image evaluation tool used directly in the FDA submission.</li>
+          <li>Owned the camera workstream end to end as sole PM — defined the specs, led external manufacturer negotiations, and designed the assembly process from scratch.</li>
+          <li>Built two assembly automation tools to make that process repeatable: a <strong>mechanical fixture</strong> that constrained sensitive optical components into precise, repeatable positioning, and a <strong>software tool</strong> that scored image quality in real time during assembly and guided the operator to correct placement before anything was locked in — together lifting production yield <strong>from 20% to 80%</strong>.</li>
+          <li>Led customer and clinical discovery with GI physicians and KOLs, translating workflow insights into product specs and roadmap priorities for next-gen colonoscopy and gastroscopy devices.</li>
+        </ul>
       </div>
-      <div class="pillar rv">
-        <div class="pillar-n">03</div>
-        <div class="pillar-t">Own the problem, not just your piece of it.</div>
-        <div class="pillar-b">Great products get built when someone decides the result matters more than the boundaries of their job description. I've always operated that way — not out of ambition, but because it's the only way to build something you're genuinely proud of. Full ownership means defining what success looks like, building toward it with clarity, and taking responsibility for what ships.</div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div class="exp-title">Product &amp; Innovation Lead</div>
+          <div class="exp-when">2022–2023</div>
+        </div>
+        <div class="exp-org">TAU MedTech Hackathon (Synergy Innovate) · IL</div>
+        <ul class="exp-bullets">
+          <li>Co-founded a healthcare-innovation org from scratch; managed <strong>6 pharma and tech sponsor relationships</strong> (Teva, Philips, Amazon, Google, Microsoft, IBM) and negotiated data-access agreements feeding 6 innovation tracks.</li>
+          <li>Coordinated <strong>18 teams (~200 participants)</strong> and delivered all milestones on schedule; the org continues today as Synergy Innovate.</li>
+        </ul>
       </div>
     </div>
+
+    <!-- Education -->
+    <div class="resume-block rv">
+      <div class="resume-block-label">Education</div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div class="exp-title">MS, Bioengineering</div>
+          <div class="exp-when">2024–2026</div>
+        </div>
+        <div class="exp-org">Northeastern University · Boston, MA · GPA 4.0</div>
+        <div class="edu-courses"><strong>Relevant coursework:</strong> Regulatory Medical Device Design, Biomedical Optics, Medical Imaging, Biomedical Instrumentation Design, Regulatory Affairs, Bioengineering Product Commercialization.</div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div class="exp-title">BS, Biomedical Engineering</div>
+          <div class="exp-when">2019–2023</div>
+        </div>
+        <div class="exp-org">Tel Aviv University · IL · Dean's List Excellence Award</div>
+      </div>
+    </div>
+
+    <a href="public/Shahar_Berger_PM.pdf" target="_blank" rel="noopener" class="btn btn-g resume-cta rv">Full resume (PDF) →</a>
   </div>
 </section>
 
-<!-- ── PROJECTS ──────────────────────────────────────────────── -->
+<!-- ── PROJECTS (group launcher) ─────────────────────────────── -->
 <section id="projects">
   <div class="wrap">
     <div class="sec-label rv">Work</div>
     <h2 class="sec-h rv">Selected projects.</h2>
-    <p class="proj-intro rv">From shipping a 0→1 RAG decision-support system for clinical prior authorization, to leading 3 FDA Class II devices from concept to approval at an early-stage startup, to systems work inside large regulated medtech and academic research. A record of what I built and what I learned.</p>
 
-    <div class="proj-grid">
+    <div class="proj-nav">
+      <a href="product-projects.html" class="proj-nav-btn rv">
+        <div class="pnav-left">
+          <span class="pnav-title">Product Projects</span>
+          <ul class="pnav-list">
+            <li>Prior Authorization Assistant (RAG)</li>
+            <li>Colonoscopy Device — FDA Approval</li>
+            <li>Gastroscopy Device — Building from Zero</li>
+            <li>TAU MedTech Hackathon</li>
+            <li>Hazard Hue — Puncture-Indicating Glove</li>
+          </ul>
+        </div>
+        <span class="pnav-arrow">→</span>
+      </a>
 
-      <!-- Card 1: Prior Authorization Assistant — RAG -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/projects/prior-auth-rag/screenshot.png" alt="Prior Authorization Assistant — RAG decision support UI" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;proj-img-placeholder&quot;><span>Prior Authorization Assistant</span></div>'">
+      <a href="hardware-projects.html" class="proj-nav-btn rv">
+        <div class="pnav-left">
+          <span class="pnav-title">Hardware Projects</span>
+          <ul class="pnav-list">
+            <li>Manufacturing Yield: 20% → 80%</li>
+            <li>Root Cause Investigation — Hemodialysis Device</li>
+            <li>LiDAR Motion Capture — Wearable Device</li>
+            <li>Thermal Conductivity of Fabrics &amp; Dressings</li>
+            <li>Pulmonary Function Lab</li>
+            <li>Wearable Ultrasound for Rotator Cuff (R21)</li>
+            <li>Smart Stethoscopes</li>
+          </ul>
         </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Personal Project · AI/RAG · Healthcare</div>
-          </div>
-          <div class="proj-title">Prior Authorization Assistant — RAG from Scratch</div>
-          <div class="proj-text">I built an end-to-end RAG (retrieval-augmented generation) system from scratch — no LangChain, no third-party vector database — to help a clinical reviewer decide whether a patient meets the coverage criteria for a procedure under their insurance policy. Stack: FastAPI + Next.js 16 + Mistral, with a custom BM25 index, a NumPy vector store, and a hybrid retriever I empirically calibrated against 32 hand-crafted golden queries and 83 synthetic QA pairs.<br><br>The system has an active UI: a nurse opens a worklist, picks a patient, hits "Analyze," and within seconds gets a structured verdict — APPROVED, DENIED, NEEDS_MORE_INFO, or INSUFFICIENT_EVIDENCE — with inline citations into the source documents. I built clinical-safety guardrails throughout: an intent classifier short-circuits unsafe or off-topic prompts before generation, similarity and version filters drop weak retrievals, and the INSUFFICIENT_EVIDENCE fallback ensures the system never fabricates on weak evidence.</div>
-          <div class="proj-result">5/5 verdicts correct on an adversarial test set. 251 hermetic tests run in ~20 seconds.</div>
-          <div class="proj-skills">RAG · LLM APIs (Mistral) · Hybrid retrieval (BM25 + semantic) · FastAPI · Next.js · Healthcare AI · Guardrails design</div>
-          <a href="https://stack-ai-prior-auth.vercel.app/" target="_blank" rel="noopener" class="proj-doc-link">Live UI — try it →</a>
-          <a href="https://github.com/ShaharPeretz1/prior-auth-assistant" target="_blank" rel="noopener" class="proj-doc-link">Source code on GitHub →</a>
-        </div>
-      </div>
+        <span class="pnav-arrow">→</span>
+      </a>
 
-      <!-- Card 2: Colonoscopy FDA -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/assets/giview.png" alt="GI View colonoscopy camera" loading="lazy">
+      <a href="software-projects.html" class="proj-nav-btn rv">
+        <div class="pnav-left">
+          <span class="pnav-title">Software Projects</span>
+          <ul class="pnav-list">
+            <li>Camera Visualization — +90% Quality</li>
+            <li>Cell Migration Analysis</li>
+            <li>Eulerian Video Magnification</li>
+          </ul>
         </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">GI View · Regulatory · Systems</div>
-          </div>
-          <div class="proj-title">Colonoscopy Device — FDA Approval</div>
-          <div class="proj-text">Taking full ownership of a complex system means holding all of it — not just the piece assigned to you. I owned this device end to end across optics, firmware, and calibration, while simultaneously managing the camera supplier relationship and keeping three FDA programs aligned.<br><br>Getting the supplier from unresponsive to weekly in-person collaboration required showing up as a technical peer, not a customer. The device passed FDA approval within approximately one month.</div>
-          <div class="proj-result">Passed FDA approval in approximately one month.</div>
-          <div class="proj-skills">Full ownership · Vendor management · Cross-functional delivery · FDA compliance</div>
-        </div>
-      </div>
-
-      <!-- Card 3: Yield -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/assets/geometric distorsion test setup from protocol.png" alt="Optical test setup" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">GI View · Engineering · Process</div>
-          </div>
-          <div class="proj-title">Manufacturing Yield: 20% → 80%</div>
-          <div class="proj-text">The production team was optimizing an assembly process that wasn't the real problem. I reframed it: the variability wasn't a people issue or a components issue — it was a process architecture issue. Nobody had scoped it that way before, and nobody had asked me to fix it. I diagnosed it, defined the project, and initiated it from scratch.<br><br>From there I owned everything. Defined the requirements and success criteria, designed and prototyped two parallel solutions — a mechanical assembly tool that constrained sensitive components into repeatable positioning, and a software tool that evaluated image quality in real time during assembly, actively directing the assembler toward correct positioning before anything was locked in. Iterated both through months of hands-on testing with the production team. When the tools were validated, I wrote the full production instructions the team would follow going forward.<br><br>The result wasn't just a yield improvement. It was a repeatable, documented process where there hadn't been one before.</div>
-          <div class="proj-result">Yield: 20% → 80%, directly accelerating FDA submission capacity.</div>
-          <div class="proj-skills">Root cause reframing · 0→1 project ownership · Hardware design · Process improvement · Cross-functional execution</div>
-        </div>
-      </div>
-
-      <!-- Card 4: Visualization -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--color">
-          <img src="public/assets/color correction SW.png" alt="Color calibration software" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">GI View · Imaging · Algorithms</div>
-          </div>
-          <div class="proj-title">Camera Visualization — +90% Quality Improvement</div>
-          <div class="proj-text">Color accuracy in a colonoscopy camera isn't an aesthetic concern — it directly affects how reliably a physician can identify tissue abnormalities. I made that clinical case visible, got the project approved, and owned it fully from there.<br><br>Taught myself color science and sensor physics from scratch — this was the one place it was unavoidable — and worked with an external algorithm consultant to build a per-camera calibration system. Became the company's sole expert on camera, optics, and imaging quality.</div>
-          <div class="proj-result">Passed FDA color requirements. ~90% overall visualization improvement from baseline.</div>
-          <div class="proj-skills">Clinical framing · Influencing without authority · Image processing · Optical systems · MATLAB / Python</div>
-        </div>
-      </div>
-
-      <!-- Card 5: Gastroscopy 0→1 -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/assets/gastro.jpg" alt="Image uniformity optical test setup" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">GI View · Product Development · 0→1</div>
-          </div>
-          <div class="proj-title">Gastroscopy Device — Building from Zero</div>
-          <div class="proj-text">New product, new clinical use case, nothing inherited. I led the full 0→1 — from physician discovery research through technology decisions, specifications, component sourcing, and vendor management. Spent time in procedure rooms observing clinical workflows across competing devices before making any technical decisions.<br><br>The technology direction I chose was justified not just on engineering merit, but on regulatory strategy: the faster, more predictable FDA pathway was a product decision as much as a technical one.</div>
-          <div class="proj-result">Full technical and regulatory architecture established from first principles.</div>
-          <div class="proj-skills">0→1 product development · Clinical discovery · Technology decisions · Regulatory strategy</div>
-        </div>
-      </div>
-
-      <!-- Card 6: NxStage -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/assets/treatment_infographic.png" alt="Hemodialysis device investigation" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">NxStage Medical · Systems Engineering</div>
-          </div>
-          <div class="proj-title">Root Cause Investigation — Class II Hemodialysis Device</div>
-          <div class="proj-text">Joining an established regulated-environment company mid-investigation meant getting up to speed on a complex multi-physics system fast — mechanical, fluidic, and electronic — and contributing meaningfully before having the full picture.<br><br>Ran an 18-variable data analysis to identify the failure mechanism, designed and executed six system-level test protocols, and translated the findings into clear technical and regulatory recommendations for senior leadership. My first exposure to how a large medical device company manages design changes under MDR scrutiny — and how much communication discipline that requires.</div>
-          <div class="proj-result">Design modification requirements established. MDR compliance maintained.</div>
-          <div class="proj-skills">Multi-variable analysis · Systems engineering · Test protocol design · Regulatory communication</div>
-        </div>
-      </div>
-
-      <!-- Card 7: MedTech Hackathon -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/projects/MedTech%20Hackathon/files/7AED81C8-76E1-4847-A5FB-E8FA3A69E46C.JPG" alt="TAU MedTech Hackathon event" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'proj-img-placeholder\'><span>MedTech Hackathon</span></div>'">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Tel Aviv University · Leadership</div>
-          </div>
-          <div class="proj-title">TAU MedTech Hackathon — Healthcare Innovation Ecosystem</div>
-          <div class="proj-text">Translating real clinical problems into challenges engineers can actually solve is a product skill. I co-organized a healthcare innovation competition — 18 teams, ~200 participants, sponsored by Amazon, Google, Microsoft, Philips, Teva, and IBM — and that translation was the core of the work.<br><br>Established partnerships with major medical institutions, structured unmet clinical needs into actionable engineering briefs, and negotiated data access agreements. Built the infrastructure for a cross-institutional ecosystem from scratch. The same initiative continues today as Synergy Innovate (formerly TAU MedTech), Tel Aviv University's medical entrepreneurship center.</div>
-          <div class="proj-result">Built a cross-institutional healthcare innovation ecosystem from scratch.</div>
-          <div class="proj-skills">Ecosystem building · Clinical translation · Strategic partnerships · Event leadership</div>
-          <a href="https://www.synergy-innovate.com/" target="_blank" rel="noopener" class="proj-doc-link">Synergy Innovate — organization site →</a>
-        </div>
-      </div>
-
-      <!-- Card 8: SnS LiDAR -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/projects/SnS/images/slide_6_img_7.png" alt="Wearable LiDAR belt harness and iPhone-based motion capture setup" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Tel Aviv University · Hardware · Algorithms</div>
-          </div>
-          <div class="proj-title">LiDAR Motion Capture — Wearable Assistive Device</div>
-          <div class="proj-text">Clinical biomechanical assessment typically requires dedicated lab equipment, trained technicians, and expensive motion capture systems. The goal here was to replace all of that with two iPhones and a belt.<br><br>I designed and built a complete wearable motion capture system using the LiDAR sensors built into iPhone Pro models — positioning them at the body's center of mass using a custom-designed adjustable belt harness I engineered for stability and comfort during movement. The system tracked sit-to-stand transitions in two axes simultaneously, capturing the full biomechanical signature of the movement.<br><br>The technical work spanned hardware and software end to end: calibrated the LiDAR sensors against an Instron testing machine as gold standard, developed custom MATLAB signal processing algorithms to extract movement sections from continuous recordings, and built computational models to quantify stability metrics — area under the curve, velocity, and acceleration of the center of mass. Validated across 12 test subjects and used the system to assess the effectiveness of an assistive mobility device in reducing fall risk during standing transitions.</div>
-          <div class="proj-result">Validated across 12 test subjects against Instron gold standard. Feasibility for clinical deployment established.</div>
-          <div class="proj-skills">Hardware design · Wearable systems · MATLAB · Signal processing · Device validation · Biomechanics</div>
-          <a href="public/projects/SnS/files/SnS final project - Shahar and Shani.pdf" target="_blank" rel="noopener" class="proj-doc-link">Read full paper →</a>
-          <a href="public/projects/SnS/files/StS and SnS presentation for Prof. Gefen.pptx" target="_blank" rel="noopener" class="proj-doc-link">full presentation slides (PPTX) →</a>
-        </div>
-      </div>
-
-      <!-- Card 9: Smart stethoscopes -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap">
-          <img src="public/projects/masters%20projects/images/smart-stethoscope-hero.png" alt="Smart stethoscope devices" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Northeastern · MS Bioengineering · Digital health</div>
-          </div>
-          <div class="proj-title">Smart Stethoscopes — From Acoustics to AI-Assisted Auscultation</div>
-          <div class="proj-text">Analog auscultation still dominates exam rooms, but sensor-rich “smart” scopes are reshaping what’s possible: noise reduction, multi-modal sensing (e.g. ECG alongside phonocardiography), and faster triage with on-device or cloud analytics.<br><br>Our team traced that arc from early binaural designs through modern platforms (e.g. Eko-class devices), catalogued limitations of conventional scopes, and articulated how digitization and AI change the clinical value proposition—immediate capture, richer waveforms, and routes toward quicker detection when paired with decision support.</div>
-          <div class="proj-result">Landscape analysis connecting device evolution, technical differentiators, and clinical impact.</div>
-          <div class="proj-skills">Digital health · Medtech landscaping · Team synthesis · Technical communication</div>
-          <a href="public/projects/masters%20projects/Stethoscope_FinalPresentation_BIOE5810.pptx" target="_blank" rel="noopener" class="proj-doc-link">Final presentation (PPTX) →</a>
-        </div>
-      </div>
-
-      <!-- Card 10: Hazard Hue regulatory / design plan -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap">
-          <img src="public/projects/masters%20projects/images/hazard-hue-hero.png" alt="Hazard Hue disposable glove concept from project presentation" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Northeastern · MS Bioengineering · Regulatory</div>
-          </div>
-          <div class="proj-title">Hazard Hue — Disposable Glove With Puncture-Indicating Color Change</div>
-          <div class="proj-text">Hazard Hue is a concept for a disposable medical glove engineered to provide an immediate visual cue when the barrier is breached—reducing needlestick and contamination uncertainty in high-risk procedural settings. Translating that idea into something a regulator can evaluate means design inputs, risk management, verification thinking, and market-access planning in one coherent thread.<br><br>Our team produced a full design-plan–style package: device description, design and development overview, design inputs and outputs, linked risk management and V&amp;V, manufacturing and quality strategy, and multi-region regulatory submission paths (EU MDR including country specifics, US, UK, Brazil, Turkey, and post-market surveillance). Supporting material includes GSPR-style mappings, verification procedure scaffolding, and DHF-oriented structure—all as an academic regulatory-systems exercise for a novel safety-oriented barrier device concept.</div>
-          <div class="proj-result">End-to-end design and regulatory documentation framework for a novel safety-oriented wearable.</div>
-          <div class="proj-skills">Design controls · ISO 14971 · MDR / FDA pathways · DHF · Team delivery</div>
-          <a href="public/projects/masters%20projects/Regulatory%20Project%20Final%20Document.docx" target="_blank" rel="noopener" class="proj-doc-link">Full regulatory &amp; design document (DOCX) →</a>
-          <a href="public/projects/masters%20projects/presentation%20(2).pptx" target="_blank" rel="noopener" class="proj-doc-link">Project presentation (PPTX) →</a>
-        </div>
-      </div>
-
-      <!-- Card 11: R21 Wearable ultrasound (rotator cuff) -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap">
-          <img src="public/projects/masters%20projects/images/rotator-cuff-r21-hero.png" alt="Rotator cuff rehabilitation and ultrasound concept from R21 presentation" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Northeastern · MS Bioengineering · Ultrasound</div>
-          </div>
-          <div class="proj-title">Wearable Ultrasound for Rotator Cuff Rehab — R21-Style Proposal</div>
-          <div class="proj-text">PM&amp;R specialists lack a repeatable way to quantify shoulder rehab progress: conventional ultrasound depends heavily on operator skill, probe pressure, gel, and still patients, so longitudinal comparisons across visits and clinicians break down.<br><br>This NIH-style R21 proposal frames a wearable, wired multi-patch system integrated with a shoulder brace—anchored in published conformable ultrasound patch work—to stabilize coupling, capture anatomy during dynamic motion in therapy, and validate mechanical and biocompatibility milestones before clinical translation. The narrative includes an aspirational track toward MIT ultrasound patch technology as stated future direction. The document lays out concrete aims: finalize patch mechanics for brace use, animal biocompatibility, and traditional-US mapping of optimal patch placement and arm positions for cuff imaging.</div>
-          <div class="proj-result">Structured research strategy linking clinical need, patch innovation, and a staged validation plan.</div>
-          <div class="proj-skills">Clinical problem framing · Ultrasound imaging · Wearable integration · Research design · Scientific writing</div>
-          <a href="public/projects/masters%20projects/rotator%20cuff%20ultrasound/R21%20Research%20Proposal%20.docx" target="_blank" rel="noopener" class="proj-doc-link">Research proposal (DOCX) →</a>
-          <a href="public/projects/masters%20projects/rotator%20cuff%20ultrasound/Group%203%20R21%20Presentation.pptx" target="_blank" rel="noopener" class="proj-doc-link">Group presentation (PPTX) →</a>
-        </div>
-      </div>
-
-      <!-- Card 12: Cell Migration -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--cells">
-          <img src="public/projects/cell%20migration/images/pdf_page_12_img_11.jpeg" alt="Cell migration image processing and analysis pipeline" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Tel Aviv University · Imaging · ML</div>
-          </div>
-          <div class="proj-title">Cell Migration Analysis — Image Processing Pipeline</div>
-          <div class="proj-text">Quantifying how cells change shape over time as they respond to a stimulus sounds straightforward until you try to do it systematically across hundreds of images. I built an automated pipeline in MATLAB — segmentation, contrast correction, background normalization, and denoising — that removed manual measurement from the process entirely and enabled consistent morphological tracking across timepoints.<br><br>A contained project, but a clear example of how I approach analytical problems: define what you're measuring, build the tool, remove the variability.</div>
-          <div class="proj-result">Automated cell morphology quantification across exposure timepoints.</div>
-          <div class="proj-skills">MATLAB · Image segmentation · Cell biology · Signal processing</div>
-          <a href="public/projects/cell%20migration/files/The%20effect%20of%20different%20concentrations%20of%20Gelatine%20substrate%20composition%20on%20cell%20migration%20V3.pptx.pdf" target="_blank" rel="noopener" class="proj-doc-link">Full presentation slides →</a>
-        </div>
-      </div>
-
-      <!-- Card 13: EMV (Eulerian video magnification) -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/projects/EMV/images/EMV.png" alt="Eulerian video magnification — motion-amplified video frames" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Tel Aviv University · Computer vision · Lab</div>
-          </div>
-          <div class="proj-title">Eulerian Video Magnification — Amplifying Subtle Motion in Video</div>
-          <div class="proj-text">Laboratory project on Eulerian video magnification: amplifying tiny temporal changes in ordinary video—pulse, respiration, small displacements—without special sensors, by combining spatial and bandpass temporal filtering. Covered algorithm choices, parameter sensitivity, and validation on controlled sequences.<br><br>Documented methodology, results, and limitations in a full technical lab report.</div>
-          <div class="proj-result">End-to-end EV M implementation with written lab report and validation narrative.</div>
-          <div class="proj-skills">Video analysis · Signal processing · MATLAB · Scientific reporting</div>
-          <a href="public/projects/EMV/files/%28EMV%29%20Eulerian_Video_Magnification_LabReport_ShaharPerez_ShaniAsraf.pdf" target="_blank" rel="noopener" class="proj-doc-link">Lab report (PDF) →</a>
-        </div>
-      </div>
-
-      <!-- Card 14: Thermal conductivity -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/projects/Thermal%20Conductivity%20/images/doc_img_0.png" alt="Thermal conductivity measurement setup — heat-flow meter" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Tel Aviv University · Materials · Biomedical textiles</div>
-          </div>
-          <div class="proj-title">Thermal Conductivity of Fabrics &amp; Dressings — Heat-Flow Meter</div>
-          <div class="proj-text">Measured thermal conductivity of fabric materials and wound dressings with a heat-flow meter under defined conditions, including humidity as a variable that matters for wear comfort and heat transfer at the skin interface. Connects bench materials testing to the kind of tradeoffs that show up in medical textiles—barrier layers, absorbency, and how heat moves away from tissue.</div>
-          <div class="proj-result">Completed humidity-aware thermal characterization with full written study.</div>
-          <div class="proj-skills">Materials testing · Heat transfer · Experimental design · Technical writing</div>
-          <a href="public/projects/Thermal%20Conductivity%20/files/Measuring%20The%20Thermal%20Conductivity%20of%20Fabric%20Materials%20And%20Dressings%20Using%20A%20Heat-Flow%20Meter%20Under%20different%20Humidity%20conditions%20V3%20%281%29%20-%D7%A2%D7%9D%20%D7%A8%D7%A4%D7%A8%D7%A0%D7%A1%D7%99%D7%A4.pdf" target="_blank" rel="noopener" class="proj-doc-link">Full paper (PDF) →</a>
-          <a href="public/projects/Thermal%20Conductivity%20/files/Measuring%20The%20Thermal%20Conductivity%20of%20Fabric%20Materials%20And%20Dressings%20Using%20A%20Heat-Flow%20Meter%20Under%20different%20Humidity%20conditions%20V3%20%281%29%20-%D7%A2%D7%9D%20%D7%A8%D7%A4%D7%A8%D7%A0%D7%A1%D7%99%D7%A4.docx" target="_blank" rel="noopener" class="proj-doc-link">Manuscript (DOCX) →</a>
-        </div>
-      </div>
-
-      <!-- Card 15: Pulmonary function -->
-      <div class="proj-card rv">
-        <div class="proj-img-wrap proj-hero--contain">
-          <img src="public/projects/Pulmunary%20Function/images/pdf_page_5_img_6.png" alt="Pulmonary function testing — flow-volume analysis" loading="lazy">
-        </div>
-        <div class="proj-body-wrap">
-          <div class="proj-top">
-            <div class="proj-tag">Tel Aviv University · Physiology · Instrumentation</div>
-          </div>
-          <div class="proj-title">Pulmonary Function Lab — Spirometry &amp; Flow–Volume Curves</div>
-          <div class="proj-text">Hands-on pulmonary function lab: spirometry, flow–volume loops, and interpretation of standard respiratory metrics in a reproducible protocol. Emphasis on connecting physiology to instrument outputs, consistency of maneuvers, and clear comparison of results to expected clinical patterns.<br><br>Findings and analysis are documented in a joint lab report.</div>
-          <div class="proj-result">Completed spirometry study with full written report and curve interpretation.</div>
-          <div class="proj-skills">Physiology · Experimental protocol · Data interpretation · Technical writing</div>
-          <a href="public/projects/Pulmunary%20Function/files/Pulmonary_Functions_LabReport_ShaharPeretz_ShaniAsraf.docx.pdf" target="_blank" rel="noopener" class="proj-doc-link">Lab report (PDF) →</a>
-        </div>
-      </div>
-
-          </div>
+        <span class="pnav-arrow">→</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -999,21 +382,6 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
   document.querySelectorAll('.rv').forEach(el => obs.observe(el));
-
-  // Post modals
-  function openPost(id) {
-    document.getElementById(id).classList.add('open');
-    document.body.style.overflow = 'hidden';
-    window.scrollTo(0,0);
-  }
-  function closePost(id) {
-    document.getElementById(id).classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  addEventListener('keydown', e => {
-    if (e.key === 'Escape')
-      document.querySelectorAll('.modal.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
-  });
 </script>
 </body>
 </html>

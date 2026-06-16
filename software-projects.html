@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Projects · Shahar Berger</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav id="nav">
+  <a href="portfolio.html" class="nav-logo">Shahar Berger</a>
+  <ul class="nav-links">
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="product-projects.html">Product</a></li>
+    <li><a href="hardware-projects.html">Hardware</a></li>
+    <li><a href="software-projects.html" class="active">Software</a></li>
+    <li><a href="portfolio.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── SUB-HERO ────────────────────────────────────────────── -->
+<header class="subhero">
+  <div class="wrap">
+    <a href="portfolio.html#projects" class="sub-back">← Back to portfolio</a>
+    <div class="sec-label">Work · Group 03</div>
+    <h1 class="sub-h">Software Projects</h1>
+    <p class="sub-intro">Algorithms and pipelines — imaging calibration, image processing, computer vision, and ML — built to turn raw signals and images into reliable, measurable outputs.</p>
+  </div>
+</header>
+
+<!-- ── CARDS ───────────────────────────────────────────────── -->
+<section class="subgrid-sec">
+  <div class="wrap">
+    <div class="proj-grid">
+
+      <!-- Visualization -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--color">
+          <img src="public/assets/color correction SW.png" alt="Color calibration software" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">GI View · Imaging · Algorithms</div>
+          </div>
+          <div class="proj-title">Camera Visualization — +90% Quality Improvement</div>
+          <div class="proj-text">Color accuracy in a colonoscopy camera isn't an aesthetic concern — it directly affects how reliably a physician can identify tissue abnormalities. I made that clinical case visible, got the project approved, and owned it fully from there.<br><br>Taught myself color science and sensor physics from scratch — this was the one place it was unavoidable — and worked with an external algorithm consultant to build a per-camera calibration system. Became the company's sole expert on camera, optics, and imaging quality.</div>
+          <div class="proj-result">Passed FDA color requirements. ~90% overall visualization improvement from baseline.</div>
+          <div class="proj-skills">Clinical framing · Influencing without authority · Image processing · Optical systems · MATLAB / Python</div>
+        </div>
+      </div>
+
+      <!-- Cell Migration -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--cells">
+          <img src="public/projects/cell%20migration/images/pdf_page_12_img_11.jpeg" alt="Cell migration image processing and analysis pipeline" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Imaging · ML</div>
+          </div>
+          <div class="proj-title">Cell Migration Analysis — Image Processing Pipeline</div>
+          <div class="proj-text">Quantifying how cells change shape over time as they respond to a stimulus sounds straightforward until you try to do it systematically across hundreds of images. I built an automated pipeline in MATLAB — segmentation, contrast correction, background normalization, and denoising — that removed manual measurement from the process entirely and enabled consistent morphological tracking across timepoints.<br><br>A contained project, but a clear example of how I approach analytical problems: define what you're measuring, build the tool, remove the variability.</div>
+          <div class="proj-result">Automated cell morphology quantification across exposure timepoints.</div>
+          <div class="proj-skills">MATLAB · Image segmentation · Cell biology · Signal processing</div>
+          <a href="public/projects/cell%20migration/files/The%20effect%20of%20different%20concentrations%20of%20Gelatine%20substrate%20composition%20on%20cell%20migration%20V3.pptx.pdf" target="_blank" rel="noopener" class="proj-doc-link">Full presentation slides →</a>
+        </div>
+      </div>
+
+      <!-- EMV (Eulerian video magnification) -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/EMV/images/EMV.png" alt="Eulerian video magnification — motion-amplified video frames" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Computer vision · Lab</div>
+          </div>
+          <div class="proj-title">Eulerian Video Magnification — Amplifying Subtle Motion in Video</div>
+          <div class="proj-text">Laboratory project on Eulerian video magnification: amplifying tiny temporal changes in ordinary video—pulse, respiration, small displacements—without special sensors, by combining spatial and bandpass temporal filtering. Covered algorithm choices, parameter sensitivity, and validation on controlled sequences.<br><br>Documented methodology, results, and limitations in a full technical lab report.</div>
+          <div class="proj-result">End-to-end EVM implementation with written lab report and validation narrative.</div>
+          <div class="proj-skills">Video analysis · Signal processing · MATLAB · Scientific reporting</div>
+          <a href="public/projects/EMV/files/%28EMV%29%20Eulerian_Video_Magnification_LabReport_ShaharPerez_ShaniAsraf.pdf" target="_blank" rel="noopener" class="proj-doc-link">Lab report (PDF) →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MORE GROUPS ─────────────────────────────────────────── -->
+<section class="more-groups">
+  <div class="wrap">
+    <div class="more-label">Explore other tracks</div>
+    <div class="more-row">
+      <a href="product-projects.html">Product Projects →</a>
+      <a href="hardware-projects.html">Hardware Projects →</a>
+      <a href="portfolio.html">Back to portfolio →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const siblings = [...e.target.parentElement.querySelectorAll('.rv')];
+      const idx = siblings.indexOf(e.target);
+      setTimeout(() => e.target.classList.add('in'), Math.min(idx * 90, 320));
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

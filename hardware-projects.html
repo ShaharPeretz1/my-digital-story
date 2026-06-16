@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware Projects · Shahar Berger</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav id="nav">
+  <a href="portfolio.html" class="nav-logo">Shahar Berger</a>
+  <ul class="nav-links">
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="product-projects.html">Product</a></li>
+    <li><a href="hardware-projects.html" class="active">Hardware</a></li>
+    <li><a href="software-projects.html">Software</a></li>
+    <li><a href="portfolio.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── SUB-HERO ────────────────────────────────────────────── -->
+<header class="subhero">
+  <div class="wrap">
+    <a href="portfolio.html#projects" class="sub-back">← Back to portfolio</a>
+    <div class="sec-label">Work · Group 02</div>
+    <h1 class="sub-h">Hardware Projects</h1>
+    <p class="sub-intro">Building and validating physical systems — wearable devices, instrumentation, process tooling, and multi-physics systems engineering across regulated medtech and academic labs.</p>
+  </div>
+</header>
+
+<!-- ── CARDS ───────────────────────────────────────────────── -->
+<section class="subgrid-sec">
+  <div class="wrap">
+    <div class="proj-grid">
+
+      <!-- Yield -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/assets/geometric distorsion test setup from protocol.png" alt="Optical test setup" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">GI View · Engineering · Process</div>
+          </div>
+          <div class="proj-title">Manufacturing Yield: 20% → 80%</div>
+          <div class="proj-text">The production team was optimizing an assembly process that wasn't the real problem. I reframed it: the variability wasn't a people issue or a components issue — it was a process architecture issue. Nobody had scoped it that way before, and nobody had asked me to fix it. I diagnosed it, defined the project, and initiated it from scratch.<br><br>From there I owned everything. Defined the requirements and success criteria, designed and prototyped two parallel solutions — a mechanical assembly tool that constrained sensitive components into repeatable positioning, and a software tool that evaluated image quality in real time during assembly, actively directing the assembler toward correct positioning before anything was locked in. Iterated both through months of hands-on testing with the production team. When the tools were validated, I wrote the full production instructions the team would follow going forward.<br><br>The result wasn't just a yield improvement. It was a repeatable, documented process where there hadn't been one before.</div>
+          <div class="proj-result">Yield: 20% → 80%, directly accelerating FDA submission capacity.</div>
+          <div class="proj-skills">Root cause reframing · 0→1 project ownership · Hardware design · Process improvement · Cross-functional execution</div>
+        </div>
+      </div>
+
+      <!-- NxStage -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/assets/treatment_infographic.png" alt="Hemodialysis device investigation" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">NxStage Medical · Systems Engineering</div>
+          </div>
+          <div class="proj-title">Root Cause Investigation — Class II Hemodialysis Device</div>
+          <div class="proj-text">Joining an established regulated-environment company mid-investigation meant getting up to speed on a complex multi-physics system fast — mechanical, fluidic, and electronic — and contributing meaningfully before having the full picture.<br><br>Ran an 18-variable data analysis to identify the failure mechanism, designed and executed six system-level test protocols, and translated the findings into clear technical and regulatory recommendations for senior leadership. My first exposure to how a large medical device company manages design changes under MDR scrutiny — and how much communication discipline that requires.</div>
+          <div class="proj-result">Design modification requirements established. MDR compliance maintained.</div>
+          <div class="proj-skills">Multi-variable analysis · Systems engineering · Test protocol design · Regulatory communication</div>
+        </div>
+      </div>
+
+      <!-- SnS LiDAR -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/SnS/images/slide_6_img_7.png" alt="Wearable LiDAR belt harness and iPhone-based motion capture setup" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Hardware · Algorithms</div>
+          </div>
+          <div class="proj-title">LiDAR Motion Capture — Wearable Assistive Device</div>
+          <div class="proj-text">Clinical biomechanical assessment typically requires dedicated lab equipment, trained technicians, and expensive motion capture systems. The goal here was to replace all of that with two iPhones and a belt.<br><br>I designed and built a complete wearable motion capture system using the LiDAR sensors built into iPhone Pro models — positioning them at the body's center of mass using a custom-designed adjustable belt harness I engineered for stability and comfort during movement. The system tracked sit-to-stand transitions in two axes simultaneously, capturing the full biomechanical signature of the movement.<br><br>The technical work spanned hardware and software end to end: calibrated the LiDAR sensors against an Instron testing machine as gold standard, developed custom MATLAB signal processing algorithms to extract movement sections from continuous recordings, and built computational models to quantify stability metrics — area under the curve, velocity, and acceleration of the center of mass. Validated across 12 test subjects and used the system to assess the effectiveness of an assistive mobility device in reducing fall risk during standing transitions.</div>
+          <div class="proj-result">Validated across 12 test subjects against Instron gold standard. Feasibility for clinical deployment established.</div>
+          <div class="proj-skills">Hardware design · Wearable systems · MATLAB · Signal processing · Device validation · Biomechanics</div>
+          <a href="public/projects/SnS/files/SnS final project - Shahar and Shani.pdf" target="_blank" rel="noopener" class="proj-doc-link">Read full paper →</a>
+          <a href="public/projects/SnS/files/StS and SnS presentation for Prof. Gefen.pptx" target="_blank" rel="noopener" class="proj-doc-link">full presentation slides (PPTX) →</a>
+        </div>
+      </div>
+
+      <!-- Thermal conductivity -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/Thermal%20Conductivity%20/images/doc_img_0.png" alt="Thermal conductivity measurement setup — heat-flow meter" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Materials · Biomedical textiles</div>
+          </div>
+          <div class="proj-title">Thermal Conductivity of Fabrics &amp; Dressings — Heat-Flow Meter</div>
+          <div class="proj-text">Measured thermal conductivity of fabric materials and wound dressings with a heat-flow meter under defined conditions, including humidity as a variable that matters for wear comfort and heat transfer at the skin interface. Connects bench materials testing to the kind of tradeoffs that show up in medical textiles—barrier layers, absorbency, and how heat moves away from tissue.</div>
+          <div class="proj-result">Completed humidity-aware thermal characterization with full written study.</div>
+          <div class="proj-skills">Materials testing · Heat transfer · Experimental design · Technical writing</div>
+          <a href="public/projects/Thermal%20Conductivity%20/files/Measuring%20The%20Thermal%20Conductivity%20of%20Fabric%20Materials%20And%20Dressings%20Using%20A%20Heat-Flow%20Meter%20Under%20different%20Humidity%20conditions%20V3%20%281%29%20-%D7%A2%D7%9D%20%D7%A8%D7%A4%D7%A8%D7%A0%D7%A1%D7%99%D7%A4.pdf" target="_blank" rel="noopener" class="proj-doc-link">Full paper (PDF) →</a>
+          <a href="public/projects/Thermal%20Conductivity%20/files/Measuring%20The%20Thermal%20Conductivity%20of%20Fabric%20Materials%20And%20Dressings%20Using%20A%20Heat-Flow%20Meter%20Under%20different%20Humidity%20conditions%20V3%20%281%29%20-%D7%A2%D7%9D%20%D7%A8%D7%A4%D7%A8%D7%A0%D7%A1%D7%99%D7%A4.docx" target="_blank" rel="noopener" class="proj-doc-link">Manuscript (DOCX) →</a>
+        </div>
+      </div>
+
+      <!-- Pulmonary function -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/Pulmunary%20Function/images/pdf_page_5_img_6.png" alt="Pulmonary function testing — flow-volume analysis" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Tel Aviv University · Physiology · Instrumentation</div>
+          </div>
+          <div class="proj-title">Pulmonary Function Lab — Spirometry &amp; Flow–Volume Curves</div>
+          <div class="proj-text">Hands-on pulmonary function lab: spirometry, flow–volume loops, and interpretation of standard respiratory metrics in a reproducible protocol. Emphasis on connecting physiology to instrument outputs, consistency of maneuvers, and clear comparison of results to expected clinical patterns.<br><br>Findings and analysis are documented in a joint lab report.</div>
+          <div class="proj-result">Completed spirometry study with full written report and curve interpretation.</div>
+          <div class="proj-skills">Physiology · Experimental protocol · Data interpretation · Technical writing</div>
+          <a href="public/projects/Pulmunary%20Function/files/Pulmonary_Functions_LabReport_ShaharPeretz_ShaniAsraf.docx.pdf" target="_blank" rel="noopener" class="proj-doc-link">Lab report (PDF) →</a>
+        </div>
+      </div>
+
+      <!-- R21 Wearable ultrasound (rotator cuff) -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/masters%20projects/images/rotator-cuff-r21-hero.png" alt="Rotator cuff rehabilitation and ultrasound concept from R21 presentation" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Northeastern · MS Bioengineering · Ultrasound</div>
+          </div>
+          <div class="proj-title">Wearable Ultrasound for Rotator Cuff Rehab — R21-Style Proposal</div>
+          <div class="proj-text">PM&amp;R specialists lack a repeatable way to quantify shoulder rehab progress: conventional ultrasound depends heavily on operator skill, probe pressure, gel, and still patients, so longitudinal comparisons across visits and clinicians break down.<br><br>This NIH-style R21 proposal frames a wearable, wired multi-patch system integrated with a shoulder brace—anchored in published conformable ultrasound patch work—to stabilize coupling, capture anatomy during dynamic motion in therapy, and validate mechanical and biocompatibility milestones before clinical translation. The narrative includes an aspirational track toward MIT ultrasound patch technology as stated future direction. The document lays out concrete aims: finalize patch mechanics for brace use, animal biocompatibility, and traditional-US mapping of optimal patch placement and arm positions for cuff imaging.</div>
+          <div class="proj-result">Structured research strategy linking clinical need, patch innovation, and a staged validation plan.</div>
+          <div class="proj-skills">Clinical problem framing · Ultrasound imaging · Wearable integration · Research design · Scientific writing</div>
+          <a href="public/projects/masters%20projects/rotator%20cuff%20ultrasound/R21%20Research%20Proposal%20.docx" target="_blank" rel="noopener" class="proj-doc-link">Research proposal (DOCX) →</a>
+          <a href="public/projects/masters%20projects/rotator%20cuff%20ultrasound/Group%203%20R21%20Presentation.pptx" target="_blank" rel="noopener" class="proj-doc-link">Group presentation (PPTX) →</a>
+        </div>
+      </div>
+
+      <!-- Smart stethoscopes -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap">
+          <img src="public/projects/masters%20projects/images/smart-stethoscope-hero.png" alt="Smart stethoscope devices" loading="lazy">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Northeastern · MS Bioengineering · Digital health</div>
+          </div>
+          <div class="proj-title">Smart Stethoscopes — From Acoustics to AI-Assisted Auscultation</div>
+          <div class="proj-text">Analog auscultation still dominates exam rooms, but sensor-rich “smart” scopes are reshaping what’s possible: noise reduction, multi-modal sensing (e.g. ECG alongside phonocardiography), and faster triage with on-device or cloud analytics.<br><br>Our team traced that arc from early binaural designs through modern platforms (e.g. Eko-class devices), catalogued limitations of conventional scopes, and articulated how digitization and AI change the clinical value proposition—immediate capture, richer waveforms, and routes toward quicker detection when paired with decision support.</div>
+          <div class="proj-result">Landscape analysis connecting device evolution, technical differentiators, and clinical impact.</div>
+          <div class="proj-skills">Digital health · Medtech landscaping · Team synthesis · Technical communication</div>
+          <a href="public/projects/masters%20projects/Stethoscope_FinalPresentation_BIOE5810.pptx" target="_blank" rel="noopener" class="proj-doc-link">Final presentation (PPTX) →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MORE GROUPS ─────────────────────────────────────────── -->
+<section class="more-groups">
+  <div class="wrap">
+    <div class="more-label">Explore other tracks</div>
+    <div class="more-row">
+      <a href="product-projects.html">Product Projects →</a>
+      <a href="software-projects.html">Software Projects →</a>
+      <a href="portfolio.html">Back to portfolio →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const siblings = [...e.target.parentElement.querySelectorAll('.rv')];
+      const idx = siblings.indexOf(e.target);
+      setTimeout(() => e.target.classList.add('in'), Math.min(idx * 90, 320));
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
