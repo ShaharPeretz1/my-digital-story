@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahar Berger — Resume</title>
+<style>
+  :root{ --ink:#111; --muted:#444; --accent:#1f5f5b; --rule:#bbb; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:#eee; color:var(--ink);
+    font-family:"Calibri","Helvetica Neue",Arial,sans-serif; font-size:11px; line-height:1.4;}
+  .page{background:#fff; width:8.5in; min-height:11in; margin:16px auto; padding:0.5in 0.6in;}
+
+  /* Header */
+  .name{font-size:25px; font-weight:700; letter-spacing:.3px; color:var(--accent);}
+  .contact{font-size:10px; color:var(--muted); margin-top:3px;}
+  .contact a{color:var(--muted); text-decoration:none;}
+  .auth{font-size:10px; color:var(--muted); margin-top:1px;}
+
+  /* Sections */
+  h2{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;
+     color:var(--accent); border-bottom:1px solid var(--rule);
+     padding-bottom:2px; margin:12px 0 6px;}
+
+  /* Skills */
+  .skill-line{margin-bottom:3px;}
+  .skill-line b{color:var(--ink);}
+
+  /* Experience */
+  .job{margin-bottom:8px;}
+  .job-head{display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
+  .job-l{font-size:11.3px;}
+  .job-l .t{font-weight:700;}
+  .job-l .o{font-weight:400;}
+  .job-when{font-size:10px; color:var(--muted); white-space:nowrap;}
+  ul{list-style:none; margin:3px 0 0;}
+  li{position:relative; padding-left:12px; margin-bottom:2.5px;}
+  li::before{content:"•"; position:absolute; left:2px; color:var(--accent);}
+  b,strong{font-weight:700;}
+
+  /* Education */
+  .edu{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2px;}
+  .edu .r{font-size:10px; color:var(--muted); white-space:nowrap; padding-left:10px;}
+  .certs{margin-top:4px;}
+
+  @media print{
+    html,body{background:#fff; font-size:10.8px;}
+    .page{width:auto; min-height:auto; margin:0; padding:0.45in 0.6in; box-shadow:none;}
+    @page{size:Letter; margin:0;}
+    a{color:var(--muted) !important;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="name">Shahar Berger</div>
+  <div class="contact">
+    Boston, MA &nbsp;|&nbsp; 857-565-6192 &nbsp;|&nbsp;
+    <a href="mailto:bergershahar10@gmail.com">bergershahar10@gmail.com</a> &nbsp;|&nbsp;
+    <a href="https://www.linkedin.com/in/shahar-berger1">linkedin.com/in/shahar-berger1</a> &nbsp;|&nbsp;
+    <a href="https://shaharperetz1.github.io/my-digital-story/portfolio.html">Portfolio</a>
+  </div>
+  <div class="auth">Medical Device R&amp;D Engineer &nbsp;·&nbsp; Systems · Process · V&amp;V &nbsp;·&nbsp; Authorized to work in the U.S. (no sponsorship required)</div>
+
+  <!-- SKILLS -->
+  <h2>Skills</h2>
+  <div class="skill-line"><b>Engineering:</b> Systems engineering, V&amp;V, root-cause analysis, design controls, Design for Manufacturing (DFM), test planning, sensor calibration, SolidWorks (CAD), hardware–software integration in regulated environments, Lean Six Sigma Green Belt.</div>
+  <div class="skill-line"><b>Software &amp; Data:</b> Python (machine learning, image processing, automation), MATLAB (data &amp; signal analysis), RAG / LLM applications (FastAPI, Next.js, Claude &amp; Mistral APIs), data pipelines, React / TypeScript.</div>
+  <div class="skill-line"><b>Domain:</b> Medical device development (FDA Class II, ISO 14971), optics &amp; medical imaging, regulatory affairs, vendor management &amp; component sourcing, clinical workflow analysis.</div>
+
+  <!-- EXPERIENCE -->
+  <h2>Professional Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-l"><span class="t">R&amp;D Systems Engineer II</span> <span class="o">| Fresenius Medical Care (NxStage), MA</span></div>
+      <div class="job-when">2025</div>
+    </div>
+    <ul>
+      <li>Led root-cause investigation of a critical performance failure in a Class II home-hemodialysis device, designing <b>6 test plans</b> across 4 subsystems (pump, motor, software, disposable) to isolate a defect from a regulatory-driven material change.</li>
+      <li>Ran <b>100+ tests</b> and an 18-variable MATLAB analysis to pinpoint the root cause, evaluated solution paths against user experience, regulatory risk, and time-and-development trade-offs, and <b>recommended a device modification to senior leadership</b>.</li>
+      <li>Maintained formal change-control records and FDA-required design documentation, keeping the program audit-ready throughout.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-l"><span class="t">Product Development Engineer, R&amp;D</span> <span class="o">| GI View Ltd., IL</span></div>
+      <div class="job-when">2022–2024</div>
+    </div>
+    <ul>
+      <li>Owned end-to-end development of <b>3 FDA Class II endoscopy devices</b> from concept to clearance, driving system design, V&amp;V, and technical trade-offs across R&amp;D, clinical, and regulatory.</li>
+      <li>Traced an 80% assembly failure rate to a high-variability manual step; designed a precision fixture with real-time guidance software that lifted production yield <b>from 20% to 80%</b> and set quality benchmarks adopted company-wide.</li>
+      <li>Led the camera's image-processing and automated sensor-calibration features, lifting <b>resolution 12.2%</b> and cutting <b>color-accuracy error 11× (delta-E 20 → 1.8)</b> with a custom Python pipeline that replaced subjective manual review with an FDA-submittable tool.</li>
+      <li>Built vendor partnerships from scratch: turned a non-responsive CMOS sensor supplier into an active collaborator, and steered a Chinese contract manufacturer through spec definition, quality requirements, and test procedures.</li>
+      <li>Directed multiple sensor suppliers and an optical lens-design house, defining part specifications and running market research to source components that met them.</li>
+      <li>Ran structured interviews with surgeons and clinical experts, translating clinical needs into engineering requirements; presented progress and trade-offs to C-suite and mentored junior engineers.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-l"><span class="t">Project Engineer</span> <span class="o">| TAU Biomedical Engineering, IL</span></div>
+      <div class="job-when">2022–2023</div>
+    </div>
+    <ul>
+      <li>Designed and prototyped a wearable <b>LiDAR-based motion-capture system</b> for a 16-participant clinical study, translating clinical requirements into technical specifications.</li>
+      <li>Built an <b>ML classifier</b> to distinguish stable from unstable movement, plus qualitative and quantitative evaluation methods, turning raw LiDAR signal into the safety and reliability data behind the clinical-trial submission.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-l"><span class="t">Product &amp; Innovation Lead</span> <span class="o">| TAU MedTech Hackathon (Synergy Innovate), IL</span></div>
+      <div class="job-when">2022–2023</div>
+    </div>
+    <ul>
+      <li>Founded and ran a healthcare-engineering competition: <b>18 teams, ~200 participants, 6 clinical challenges</b>, backed by 5 industry sponsors (Amazon, Google, Microsoft, Philips, IBM); secured hospital data access and coordinated technical mentors from kickoff to finals.</li>
+    </ul>
+  </div>
+
+  <!-- PROJECTS -->
+  <h2>Projects</h2>
+  <div class="job">
+    <div class="job-head">
+      <div class="job-l"><span class="t">Prior Authorization Assistant (RAG)</span> <span class="o">| Personal Project</span></div>
+      <div class="job-when">2026</div>
+    </div>
+    <ul>
+      <li>Built an end-to-end retrieval-augmented-generation system from scratch (FastAPI, Next.js, Mistral, custom BM25 + vector store, clinical-safety guardrails) to reason through insurance coverage questions; <b>251 hermetic tests</b>, 5/5 on an adversarial verdict set.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head">
+      <div class="job-l"><span class="t">AI Copilot — Serverless LLM App</span> <span class="o">| Personal Project</span></div>
+      <div class="job-when">2026</div>
+    </div>
+    <ul>
+      <li>Designed and shipped an LLM-powered web app in one week (React/TypeScript, Claude API, autonomous agent workflow), spec-first with a public engineering decision record.</li>
+    </ul>
+  </div>
+
+  <!-- EDUCATION -->
+  <h2>Education &amp; Certifications</h2>
+  <div class="edu">
+    <div><b>M.S., Bioengineering</b> — Northeastern University, MA &nbsp;·&nbsp; GPA 4.0</div>
+    <div class="r">2024–2026</div>
+  </div>
+  <div class="edu">
+    <div><b>B.S., Biomedical Engineering</b> — Tel Aviv University, IL &nbsp;·&nbsp; Dean's Excellence Award</div>
+    <div class="r">2019–2023</div>
+  </div>
+  <div class="certs"><b>Certifications:</b> Embedded Systems &amp; Robotics (Udacity) · Generative AI Fluency (Udacity) · MATLAB Certified (MathWorks) · Optics for Engineers.</div>
+
+</div>
+</body>
+</html>
