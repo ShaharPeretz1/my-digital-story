@@ -27,9 +27,9 @@
 <div id="hero">
   <div class="hero-name">Shahar Berger</div>
   <h1 class="hero-h">Building things that matter.</h1>
-  <p class="hero-sub">Technical AI Product Manager for healthcare.<br>Native AI engineer. Native bioengineer. 0→1 product leader.</p>
+  <p class="hero-sub">Medical Device R&amp;D Engineer. Systems, process &amp; V&amp;V.<br>I build the hardware, the software, and the tools in between.</p>
   <div class="hero-tags">
-    Applied AI <span>·</span> RAG &amp; LLMs <span>·</span> 3 FDA Class II Devices <span>·</span> MS Bioengineering <span>·</span> Scrum 0→1
+    3 FDA Class II Devices <span>·</span> 20→80% Manufacturing Yield <span>·</span> Hardware + Software + Data <span>·</span> MS Bioengineering <span>·</span> Builds with AI/ML
   </div>
   <div class="hero-ctas">
     <a href="#projects" class="btn btn-g">See my work</a>
@@ -45,8 +45,8 @@
       <div class="met-l">Manufacturing yield - up from 20%</div>
     </div>
     <div class="met rv">
-      <div class="met-n">+<span class="acc">90</span>%</div>
-      <div class="met-l">Camera visualization improvement</div>
+      <div class="met-n"><span class="acc">11</span>×</div>
+      <div class="met-l">Lower camera color-accuracy error (20 → 1.8)</div>
     </div>
     <div class="met rv">
       <div class="met-n"><span class="acc">3</span></div>
@@ -65,10 +65,10 @@
     <div class="about-grid">
       <div class="about-text rv">
         <div class="sec-label">Background</div>
-        <h2 class="sec-h">I believe product today means building,<br>not just speccing.</h2>
-        <p>What draws me to product management in healthcare is the cross-disciplinary, slightly messy kind of problem: the kind where you have to understand several systems at once before the right answer shows up, and where you can never lose sight of who you're building for and what it actually does for them.
+        <h2 class="sec-h">The best way to understand a system<br>is to build it yourself.</h2>
+        <p>What draws me in healthcare engineering is the cross-disciplinary, slightly messy kind of problem: the kind where you have to understand several systems at once — mechanical, optical, software, regulatory — before the right answer shows up, and where you can never lose sight of who you're building for and what it actually does for them.
         <p>That instinct got tested early. In undergrad, a class paired my team with a woman living with a vision disorder. She couldn't tell the buttons apart on her cooking machine, so we set out to build something impressive: connect it to an app, re-engineer the whole thing. She was confused. When we finally stopped pitching and started listening, the real fix was almost embarrassingly simple. We changed the buttons she already used so her fingers could distinguish them. That stuck with me. The job isn't to build the most advanced thing; it's to understand the real problem and solve it in the simplest way that works.
-        <p>I came up through R&D and engineering, so I've spent some time on the other side of the table, and I've seen how much smoother things go when the person defining the work actually understands it. The PM role has changed since then: it isn't just writing specs anymore, it's building too. I never really separated the two. I write the code, I build the system, and I keep up with the AI tools as they move, getting my hands dirty with new ones all the time.
+        <p>I came up through R&D and engineering, and I've never liked the split between the people who define the work and the people who build it. I do both. I write the code, model the CAD, build the system, and keep up with the AI tools as they move, getting my hands dirty with new ones all the time.
       </div>
 
       <div class="photo-box rv">
@@ -86,24 +86,9 @@
     <h2 class="sec-h rv">Selected projects.</h2>
 
     <div class="proj-nav">
-      <a href="product-projects.html" class="proj-nav-btn rv">
-        <div class="pnav-left">
-          <span class="pnav-title">Product Projects</span>
-          <ul class="pnav-list">
-            <li>PM Copilot — AI Toolkit for PMs</li>
-            <li>Prior Authorization Assistant (RAG)</li>
-            <li>Colonoscopy Device — FDA Approval</li>
-            <li>Gastroscopy Device — Building from Zero</li>
-            <li>TAU MedTech Hackathon</li>
-            <li>Hazard Hue — Puncture-Indicating Glove</li>
-          </ul>
-        </div>
-        <span class="pnav-arrow">→</span>
-      </a>
-
       <a href="hardware-projects.html" class="proj-nav-btn rv">
         <div class="pnav-left">
-          <span class="pnav-title">Hardware Projects</span>
+          <span class="pnav-title">Systems &amp; Hardware</span>
           <ul class="pnav-list">
             <li>Manufacturing Yield: 20% → 80%</li>
             <li>Root Cause Investigation — Hemodialysis Device</li>
@@ -119,11 +104,26 @@
 
       <a href="software-projects.html" class="proj-nav-btn rv">
         <div class="pnav-left">
-          <span class="pnav-title">Software Projects</span>
+          <span class="pnav-title">Software, Data &amp; AI</span>
           <ul class="pnav-list">
-            <li>Camera Visualization — +90% Quality</li>
+            <li>Camera Visualization — Resolution &amp; Color</li>
             <li>Cell Migration Analysis</li>
             <li>Eulerian Video Magnification</li>
+          </ul>
+        </div>
+        <span class="pnav-arrow">→</span>
+      </a>
+
+      <a href="product-projects.html" class="proj-nav-btn rv">
+        <div class="pnav-left">
+          <span class="pnav-title">Device Development &amp; AI Builds</span>
+          <ul class="pnav-list">
+            <li>Colonoscopy Device — FDA Approval</li>
+            <li>Gastroscopy Device — Building from Zero</li>
+            <li>Prior Authorization Assistant (RAG pipeline)</li>
+            <li>AI Copilot — built with LLMs</li>
+            <li>Hazard Hue — Puncture-Indicating Glove</li>
+            <li>TAU MedTech Hackathon</li>
           </ul>
         </div>
         <span class="pnav-arrow">→</span>
@@ -150,23 +150,24 @@
         </div>
         <div class="exp-org">NxStage Medical (Fresenius Medical Care) · MA · Class II home hemodialysis</div>
         <ul class="exp-bullets">
-          <li>Ran an <strong>18-variable MATLAB root-cause analysis</strong> on an on-market Class II home-hemodialysis device after a regulatory-driven material change, delivering validated design modifications under MDR scrutiny.</li>
-          <li>Designed and executed <strong>6 system-level test protocols</strong> spanning mechanical, electrical, firmware, and software, with status reporting to senior leadership.</li>
+          <li>Ran <strong>100+ tests</strong> and an <strong>18-variable MATLAB root-cause analysis</strong> on an on-market Class II home-hemodialysis device after a regulatory-driven material change, then evaluated solution paths against UX, regulatory risk, and schedule and <strong>recommended a device modification to senior leadership</strong>.</li>
+          <li>Designed <strong>6 test plans</strong> across pump, motor, software, and disposable subsystems to isolate the defect.</li>
         </ul>
       </div>
 
       <div class="exp-item">
         <div class="exp-head">
-          <div class="exp-title">Product Manager</div>
+          <div class="exp-title">Product Development Engineer – R&amp;D</div>
           <div class="exp-when">2022–2024</div>
         </div>
         <div class="exp-org">GI View Ltd. · IL · 3 FDA Class II devices</div>
         <ul class="exp-bullets">
-          <li>Managed <strong>3 concurrent FDA Class II endoscopy device programs</strong> as product lead — owning roadmap, sprint planning, risk management, and regulatory documentation from concept through submission.</li>
-          <li>Drove an <strong>~90% imaging-quality improvement</strong> through ML-based image processing and CMOS sensor calibration; shipped an automated clinical-image evaluation tool used directly in the FDA submission.</li>
-          <li>Owned the camera workstream end to end as sole PM — defined the specs, led external manufacturer negotiations, and designed the assembly process from scratch.</li>
+          <li>Owned end-to-end development of <strong>3 FDA Class II endoscopy devices</strong> from concept to clearance, driving system design, V&amp;V, and technical trade-offs across R&D, clinical, and regulatory.</li>
+          <li>Led the camera's image-processing and automated sensor-calibration features, lifting <strong>resolution 12.2%</strong> and cutting <strong>color-accuracy error 11× (20 → 1.8)</strong>; shipped an automated clinical-image evaluation tool used directly in the FDA submission.</li>
+          <li>Owned the camera workstream end to end — defined the specs, led external manufacturer negotiations, and designed the assembly process from scratch.</li>
           <li>Built two assembly automation tools to make that process repeatable: a <strong>mechanical fixture</strong> that constrained sensitive optical components into precise, repeatable positioning, and a <strong>software tool</strong> that scored image quality in real time during assembly and guided the operator to correct placement before anything was locked in — together lifting production yield <strong>from 20% to 80%</strong>.</li>
-          <li>Led customer and clinical discovery with GI physicians and KOLs, translating workflow insights into product specs and roadmap priorities for next-gen colonoscopy and gastroscopy devices.</li>
+          <li>Built vendor partnerships from scratch (CMOS sensor supplier, Chinese contract manufacturer, optical lens-design house): defined part specifications, quality requirements, and test procedures.</li>
+          <li>Led clinical discovery with GI physicians and KOLs, translating workflow insights into engineering requirements for next-gen colonoscopy and gastroscopy devices.</li>
         </ul>
       </div>
 
@@ -214,7 +215,7 @@
   <div class="wrap">
     <div class="sec-label rv">Reads</div>
     <h2 class="sec-h rv">Things I keep coming back to.</h2>
-    <p class="think-intro rv">Books and podcasts that have genuinely changed how I think — about building products, engineering, performance, and the career game.</p>
+    <p class="think-intro rv">Books and podcasts that have genuinely changed how I think — about building, engineering, performance, and the career game.</p>
 
     <!-- Books -->
     <div class="reads-section rv">
@@ -339,8 +340,8 @@
       <h2 class="sec-h-lt rv">Where I'm going.</h2>
       <div class="next-body rv">
         <p>I'm completing my MS in Bioengineering at Northeastern in May 2026 and looking for my next challenge.</p>
-        <p>What draws me most: early-stage environments where the problem is still being defined — companies building something genuinely hard in biotech, medical devices, or life sciences, where the work requires holding technical, clinical, and regulatory complexity together at the same time.</p>
-        <p>The direction I'm building toward is product leadership where strategy and execution are still the same job.</p>
+        <p>What draws me most: environments where the problem is still being defined — teams building something genuinely hard in medical devices, hardware, or deep tech, where the work requires holding technical, clinical, and regulatory complexity together at the same time.</p>
+        <p>The direction I'm building toward is R&D and systems engineering, where designing the thing and building it are still the same job.</p>
         <p>If you're working on something in that space, or just want to connect and swap ideas about where the field is going — I'd genuinely love to chat.</p>
       </div>
       <a href="#contact" class="btn btn-lt rv">Get in touch →</a>
@@ -363,7 +364,7 @@
         <a href="public/Shahar_Berger_PM.pdf" target="_blank" class="clink">Resume PDF →</a>
       </div>
     </div>
-    <div class="footer-bar rv">© 2026 Shahar Berger · Bioengineer &amp; Product Builder</div>
+    <div class="footer-bar rv">© 2026 Shahar Berger · Bioengineer &amp; Builder</div>
   </div>
 </section>
 
