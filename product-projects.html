@@ -74,6 +74,25 @@
         </div>
       </div>
 
+      <!-- se-planner — auditable V&V plans -->
+      <div class="proj-card rv">
+        <div class="proj-img-wrap proj-hero--contain">
+          <img src="public/projects/se-planner/screenshot.png" alt="se-planner — V&amp;V plan authoring UI" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;proj-img-placeholder&quot;><span>se-planner</span></div>'">
+        </div>
+        <div class="proj-body-wrap">
+          <div class="proj-top">
+            <div class="proj-tag">Personal Project · AI/RAG · Regulated MedTech</div>
+          </div>
+          <div class="proj-title">se-planner — Auditable V&amp;V Plans for 510(k) Devices</div>
+          <div class="proj-text">I built an AI tool that drafts FDA-grounded verification &amp; validation plans for 510(k) medical devices — the trustworthy way. Given a subject device and a predicate, it reasons through their differences the way FDA's substantial-equivalence framework does and produces a plan where every test is <em>derived</em> — traceable to a specific difference or risk, cited to a verified FDA-recognized standard, with measurable acceptance criteria and a sample-size rationale. The design principle is <strong>AI proposes, deterministic rules enforce, humans approve</strong>: rules decide <em>that</em> a test is required, retrieval only fills in <em>which</em> standard, and a fabricated standard or an untraceable test literally cannot reach the output.<br><br>Stack: Python + FastAPI, structured Pydantic schemas at every step, a lexical-primary retriever (BM25 + exact-designation) over a verified standards allowlist and an FDA-guidance corpus, hard trustworthiness gates, and a machine-readable audit log per run. A tabbed GUI takes you from an uploaded device spec to an editable, exportable Verification &amp; Validation plan (Word/DOCX), with a saved-plans library and a plan-grounded chat. Grounded in QMSR, IEC 62304, ISO 14971, and the FDA CADe / PCCP / GMLP guidances.</div>
+          <div class="proj-result">Over 8 real device pairs: citation validity 1.00 and traceability 1.00 (structural invariants) vs a naive baseline at 0.74 / 0.00; category recall 0.91; an RA-judge calibrated to FDA-derived labels at Cohen's κ 0.81.</div>
+          <div class="proj-skills">Regulated-software AI · RAG · Hybrid retrieval (BM25) · FastAPI · Pydantic · Trust-boundary design · Evaluation (κ, ablation) · FDA 510(k) / QMSR / IEC 62304 / ISO 14971 · DOCX generation</div>
+          <a href="https://se-planner-live-site.vercel.app" target="_blank" rel="noopener" class="proj-doc-link">Overview &amp; demo →</a>
+          <a href="https://se-planner.onrender.com" target="_blank" rel="noopener" class="proj-doc-link">Live tool — try it →</a>
+          <a href="https://github.com/ShaharPeretz1/se-planner" target="_blank" rel="noopener" class="proj-doc-link">Source code on GitHub →</a>
+        </div>
+      </div>
+
       <!-- Colonoscopy FDA -->
       <div class="proj-card rv">
         <div class="proj-img-wrap proj-hero--contain">
